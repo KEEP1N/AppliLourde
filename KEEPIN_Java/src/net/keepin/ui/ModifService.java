@@ -4,10 +4,10 @@ import javax.swing.JComboBox;
 
 
 
-public class ModifierService {
+public class ModifService {
 
 
-	public ModifierService() {
+	public ModifService() {
 		Conteneur modifservice = new Conteneur("Modifier un Service");
 		
 		JTextPane txtpnChoixDuService = new JTextPane();

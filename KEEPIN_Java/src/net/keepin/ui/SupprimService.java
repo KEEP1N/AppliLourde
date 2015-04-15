@@ -10,13 +10,13 @@ import javax.swing.JTextPane;
 import javax.swing.JComboBox;
 
 
-public class SupprimerService  {
+public class SupprimService  {
 
 	
 
 
 	@SuppressWarnings("rawtypes")
-	public SupprimerService() {
+	public SupprimService() {
 		Conteneur SuppService = new Conteneur("Supprimer un Service");
 		
 		JTextPane txtpnChoixDuService = new JTextPane();
