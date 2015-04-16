@@ -10,7 +10,7 @@ public class Bdd {
 	public static void openConnexion(){
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://172.16.100.120/Demo";
+			String url = "jdbc:mysql://172.16.100.120/Keepin1";
 			connDb = DriverManager.getConnection(url, "root", "toor");
 			if (connDb != null){
 				System.out.println("DataBase connectée");
@@ -42,6 +42,24 @@ public class Bdd {
 			stmt = null;
 		}
 
+		return retVal;
+	}
+	
+	public static String hashMd5(String strToHash) {
+		String retVal = new String ("");
+		if(strToHash.equals("")){
+			retVal = "";
+		}else{
+			String SQLQuery = "SELECT MD5('"+strToHash+"') as hash";
+			ResultSet rs = executeQuery(SQLQuery);
+			try {
+				rs.next();
+				retVal = rs.getString("hash");
+				rs.close();
+			} catch (Exception e) {
+				retVal = "";
+			}
+		}
 		return retVal;
 	}
 

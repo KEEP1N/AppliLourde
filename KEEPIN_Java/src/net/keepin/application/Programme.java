@@ -1,7 +1,9 @@
 package net.keepin.application;
 
 
-import net.keepin.ui.AjoutPoste;
+import javax.swing.JOptionPane;
+
+import net.keepin.ui.Connexion;
 
 
 public class Programme {
@@ -9,9 +11,19 @@ public class Programme {
 	public static void main(String[] args) {
 		try
 		{
+			Connexion uneConnexion = new Connexion();
+			Bdd.openConnexion();
+			uneConnexion.setVisible(true);
+			if(uneConnexion.getValue()){
+				//Connexion Ok
+				System.out.println("User connecté");
+			}else{
+				System.out.println("User non connecté");
+				System.exit(0);
+			}
 			
-			//Identification pageIdentification = new Identification();
-			//pageIdentification.setVisible(true);
+			Bdd.closeConnexion();
+		
 			
 			//new AjoutPoste();
 			
@@ -40,6 +52,16 @@ public class Programme {
 			e.printStackTrace();
 		}
 
+	}
+	
+	public static void showError(String pMessage) {
+		JOptionPane.showMessageDialog(null, pMessage, "Erreur", JOptionPane.ERROR_MESSAGE);
+		
+	}
+	
+	public static void showWarning(String pMessage) {
+		JOptionPane.showMessageDialog(null, pMessage, "Attention!", JOptionPane.WARNING_MESSAGE);
+		
 	}
 
 }
