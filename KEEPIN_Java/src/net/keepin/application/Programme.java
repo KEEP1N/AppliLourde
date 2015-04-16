@@ -3,6 +3,7 @@ package net.keepin.application;
 
 import javax.swing.JOptionPane;
 
+import net.keepin.ui.AjoutBatiment;
 import net.keepin.ui.Connexion;
 
 
@@ -11,8 +12,8 @@ public class Programme {
 	public static void main(String[] args) {
 		try
 		{
-			Connexion uneConnexion = new Connexion();
-			Bdd.openConnexion();
+			/*Connexion uneConnexion = new Connexion();
+			
 			uneConnexion.setVisible(true);
 			if(uneConnexion.getValue()){
 				//Connexion Ok
@@ -22,7 +23,7 @@ public class Programme {
 				System.exit(0);
 			}
 			
-			Bdd.closeConnexion();
+			Bdd.closeConnexion();*/
 		
 			
 			//new AjoutPoste();
@@ -31,7 +32,7 @@ public class Programme {
 			//new ModifPoste2();
 			//new SupprimPoste1();
 			//new SupprimPoste2();
-			//new AjoutBatiment();
+			new AjoutBatiment();
 			//new ModifBatiment();
 			//new SupprimBatiment();
 			//new AjoutEtage();
@@ -51,7 +52,6 @@ public class Programme {
 		{
 			e.printStackTrace();
 		}
-
 	}
 	
 	public static void showError(String pMessage) {

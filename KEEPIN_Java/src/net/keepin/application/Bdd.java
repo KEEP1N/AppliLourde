@@ -45,6 +45,20 @@ public class Bdd {
 		return retVal;
 	}
 	
+	public static int executeUpdate(String pSQLUpdate) {
+		// A utiliser pour toutes les requêtes de type INSERT, DELETE et UPDATE
+		Statement stmt = null;
+		int retVal = 0;
+		try {
+			stmt = connDb.createStatement();
+			retVal = stmt.executeUpdate(pSQLUpdate);
+		} catch (SQLException e) {
+			stmt = null;
+		}
+
+		return retVal;
+	}
+	
 	public static String hashMd5(String strToHash) {
 		String retVal = new String ("");
 		if(strToHash.equals("")){
@@ -62,5 +76,7 @@ public class Bdd {
 		}
 		return retVal;
 	}
+
+
 
 }
