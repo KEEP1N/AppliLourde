@@ -10,8 +10,8 @@ public class Bdd {
 	public static void openConnexion(){
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://172.16.100.120/Demo";
-			connDb = DriverManager.getConnection(url, "root", "toor");
+			String url = "jdbc:mysql://172.16.100.180/Demo";
+			connDb = DriverManager.getConnection("jdbc:mysql://192.168.56.101/Keepin", "root", "toor");
 			if (connDb != null){
 				System.out.println("DataBase connectée");
 			}
@@ -43,6 +43,20 @@ public class Bdd {
 		}
 
 		return retVal;
+	}
+	
+	public static int executeUpdate(String psqlQuery2){
+		Statement stmt = null;
+		int retVal = 0 ;
+		try {
+			stmt = connDb.createStatement();
+			retVal = stmt.executeUpdate(psqlQuery2);
+		} catch (SQLException e) {
+			stmt = null;
+		}
+
+		return retVal;
+
 	}
 
 }

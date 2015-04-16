@@ -1,9 +1,12 @@
 package net.keepin.application;
 
+import net.keepin.ui.AjoutService;
+
 
 public class Programme {
 
 	public static void main(String[] args) {
+		Bdd.openConnexion();
 		try
 		{
 			
@@ -30,13 +33,14 @@ public class Programme {
 			//new AjoutNiveau();
 			//new ModifNiveau();
 			//new SupprimNiveau();
+			new AjoutService();
 			
 
 		}catch(Exception e)
 		{
 			e.printStackTrace();
 		}
-
+		
 	}
 
 }
