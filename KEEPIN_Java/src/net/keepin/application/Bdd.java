@@ -10,8 +10,13 @@ public class Bdd {
 	public static void openConnexion(){
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
+<<<<<<< HEAD
 			String url = "jdbc:mysql://172.16.100.180/Demo";
 			connDb = DriverManager.getConnection("jdbc:mysql://192.168.56.101/Keepin", "root", "toor");
+=======
+			String url = "jdbc:mysql://172.16.100.120/Keepin1";
+			connDb = DriverManager.getConnection(url, "root", "toor");
+>>>>>>> ba5cbd80f8fbe1e3a71e321073dd6971e564951a
 			if (connDb != null){
 				System.out.println("DataBase connectée");
 			}
@@ -45,18 +50,52 @@ public class Bdd {
 		return retVal;
 	}
 	
+<<<<<<< HEAD
 	public static int executeUpdate(String psqlQuery2){
 		Statement stmt = null;
 		int retVal = 0 ;
 		try {
 			stmt = connDb.createStatement();
 			retVal = stmt.executeUpdate(psqlQuery2);
+=======
+	public static int executeUpdate(String pSQLUpdate) {
+		// A utiliser pour toutes les requêtes de type INSERT, DELETE et UPDATE
+		Statement stmt = null;
+		int retVal = 0;
+		try {
+			stmt = connDb.createStatement();
+			retVal = stmt.executeUpdate(pSQLUpdate);
+>>>>>>> ba5cbd80f8fbe1e3a71e321073dd6971e564951a
 		} catch (SQLException e) {
 			stmt = null;
 		}
 
 		return retVal;
+<<<<<<< HEAD
 
 	}
+=======
+	}
+	
+	public static String hashMd5(String strToHash) {
+		String retVal = new String ("");
+		if(strToHash.equals("")){
+			retVal = "";
+		}else{
+			String SQLQuery = "SELECT MD5('"+strToHash+"') as hash";
+			ResultSet rs = executeQuery(SQLQuery);
+			try {
+				rs.next();
+				retVal = rs.getString("hash");
+				rs.close();
+			} catch (Exception e) {
+				retVal = "";
+			}
+		}
+		return retVal;
+	}
+
+
+>>>>>>> ba5cbd80f8fbe1e3a71e321073dd6971e564951a
 
 }

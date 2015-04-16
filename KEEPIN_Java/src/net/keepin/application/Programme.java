@@ -3,15 +3,31 @@ package net.keepin.application;
 import net.keepin.ui.AjoutService;
 
 
+import javax.swing.JOptionPane;
+
+import net.keepin.ui.AjoutBatiment;
+import net.keepin.ui.Connexion;
+
+
 public class Programme {
 
 	public static void main(String[] args) {
 		Bdd.openConnexion();
 		try
 		{
+			/*Connexion uneConnexion = new Connexion();
 			
-			//Identification pageIdentification = new Identification();
-			//pageIdentification.setVisible(true);
+			uneConnexion.setVisible(true);
+			if(uneConnexion.getValue()){
+				//Connexion Ok
+				System.out.println("User connecté");
+			}else{
+				System.out.println("User non connecté");
+				System.exit(0);
+			}
+			
+			Bdd.closeConnexion();*/
+		
 			
 			//new AjoutPoste();
 			
@@ -19,7 +35,7 @@ public class Programme {
 			//new ModifPoste2();
 			//new SupprimPoste1();
 			//new SupprimPoste2();
-			//new AjoutBatiment();
+			new AjoutBatiment();
 			//new ModifBatiment();
 			//new SupprimBatiment();
 			//new AjoutEtage();
@@ -40,6 +56,18 @@ public class Programme {
 		{
 			e.printStackTrace();
 		}
+<<<<<<< HEAD
+=======
+	}
+	
+	public static void showError(String pMessage) {
+		JOptionPane.showMessageDialog(null, pMessage, "Erreur", JOptionPane.ERROR_MESSAGE);
+		
+	}
+	
+	public static void showWarning(String pMessage) {
+		JOptionPane.showMessageDialog(null, pMessage, "Attention!", JOptionPane.WARNING_MESSAGE);
+>>>>>>> ba5cbd80f8fbe1e3a71e321073dd6971e564951a
 		
 	}
 
