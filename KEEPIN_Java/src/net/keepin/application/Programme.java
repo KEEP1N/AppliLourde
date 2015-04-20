@@ -3,8 +3,7 @@ package net.keepin.application;
 
 import javax.swing.JOptionPane;
 
-import net.keepin.ui.AjoutBatiment;
-import net.keepin.ui.Connexion;
+import net.keepin.ui.SupprimBatiment;
 
 
 public class Programme {
@@ -32,9 +31,9 @@ public class Programme {
 			//new ModifPoste2();
 			//new SupprimPoste1();
 			//new SupprimPoste2();
-			new AjoutBatiment();
+			//new AjoutBatiment();
 			//new ModifBatiment();
-			//new SupprimBatiment();
+			new SupprimBatiment();
 			//new AjoutEtage();
 			//new ModifEtage();
 			//new SupprimEtage();

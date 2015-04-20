@@ -30,10 +30,10 @@ public class AjoutBatiment{
 		labelLibelle.setBounds(350, 350, 56, 25);
 		ajoutBatiment.getContentPane().add(labelLibelle);
 		
-		final JLabel labelError = new JLabel("");
-		labelError.setHorizontalAlignment(SwingConstants.CENTER);
-		labelError.setBounds(288, 463, 518, 50);
-		ajoutBatiment.getContentPane().add(labelError);
+		final JLabel labelInformation = new JLabel("");
+		labelInformation.setHorizontalAlignment(SwingConstants.CENTER);
+		labelInformation.setBounds(288, 463, 518, 50);
+		ajoutBatiment.getContentPane().add(labelInformation);
 		
 		Bouton boutonAjouter = new Bouton("Ajouter", 630, 0, 128);
 		boutonAjouter.addMouseListener(new MouseAdapter() {
@@ -48,12 +48,12 @@ public class AjoutBatiment{
 				try{
 					SQLResultVerif.next();
 					if(SQLResultVerif.getInt("total")!=0){
-						labelError.setText("Ce bâtiment existe déjà, veuillez rentrez un autre libellé.");
+						labelInformation.setText("Ce bâtiment existe déjà, veuillez rentrez un autre libellé.");
 					}else{
 						// On rajoute à la base de données
 						String SQLAjout = "INSERT INTO batiment (bat_libelle) VALUES ('" + libelle +"')";
 						int retVal = Bdd.executeUpdate(SQLAjout);
-						labelError.setText("Le bâtiment a bien été ajouté.");
+						labelInformation.setText("Le bâtiment a bien été ajouté.");
 					}
 					
 				}catch (Exception e1) {

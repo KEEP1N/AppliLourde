@@ -1,13 +1,15 @@
 package net.keepin.ui;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.ResultSet;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.JComboBox;
+import javax.swing.SwingConstants;
+
+import net.keepin.application.Bdd;
+import net.keepin.table.Service;
+
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.ResultSet;
 
 
 
@@ -18,50 +20,63 @@ public class AjoutPoste {
 
 		JLabel LabelLibelle = new JLabel("Libell\u00E9:");
 		LabelLibelle.setBounds(350, 350, 56, 25);
-		ajoutPoste.add(LabelLibelle);
+		ajoutPoste.getContentPane().add(LabelLibelle);
 
 		textFieldLibelle = new JTextField();
 		LabelLibelle.setLabelFor(textFieldLibelle);
 		textFieldLibelle.setBounds(500, 350, 160, 25);
-		ajoutPoste.add(textFieldLibelle);
+		ajoutPoste.getContentPane().add(textFieldLibelle);
 		textFieldLibelle.setColumns(10);
 
 		JLabel Labelservice = new JLabel("Service:");
 		Labelservice.setBounds(350, 400, 56, 25);
-		ajoutPoste.add(Labelservice);
+		ajoutPoste.getContentPane().add(Labelservice);
 
-		JComboBox<String> comboBoxService = new JComboBox<String>();
+		final ComboService comboBoxServ = new ComboService();
 
-		try
-		{
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection connDb = DriverManager.getConnection("jdbc:mysql://172.16.100.120/Keepin1","root", "toor");
-			Statement stmt = connDb.createStatement();
-			String selectService = "SELECT serv_libelle FROM service";
-			ResultSet resultListServ = stmt.executeQuery(selectService);
-			while(resultListServ.next()){
-				
-				comboBoxService.addItem(resultListServ.getString("serv_libelle"));
-				
-			}
-			
-		}catch(ClassNotFoundException e)
-		{
-			e.printStackTrace();
-		}catch(SQLException e)
-		{
-			e.printStackTrace();
-		}
+		Labelservice.setLabelFor(comboBoxServ);
+		comboBoxServ.setBounds(500, 400, 160, 25);
+		ajoutPoste.getContentPane().add(comboBoxServ);
 
-		Labelservice.setLabelFor(comboBoxService);
-		comboBoxService.setBounds(500, 400, 160, 25);
-		ajoutPoste.add(comboBoxService);
-		
+		final JLabel labelInformation = new JLabel("");
+		labelInformation.setHorizontalAlignment(SwingConstants.CENTER);
+		labelInformation.setBounds(288, 463, 518, 50);
+		ajoutPoste.getContentPane().add(labelInformation);
+
 		Bouton boutonAnnuler = new Bouton ("Annuler", 350, 128, 0);
-		ajoutPoste.add(boutonAnnuler);
-		
+		ajoutPoste.getContentPane().add(boutonAnnuler);
+
 		Bouton boutonAjouter = new Bouton ("Ajouter", 630, 0, 128);
-		ajoutPoste.add(boutonAjouter);
+		
+		boutonAjouter.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				int IDCombo = ((Service) comboBoxServ.getSelectedItem()).getId();
+				String libelle = textFieldLibelle.getText().trim();
+				
+				Bdd.openConnexion();
+				String SQLQueryVerif = "SELECT COUNT(*) AS total FROM poste WHERE Upper(post_libelle) = '" + libelle.toUpperCase() +"'";
+				ResultSet SQLResultVerif = Bdd.executeQuery(SQLQueryVerif);
+				try{
+					SQLResultVerif.next();
+					if(SQLResultVerif.getInt("total")!=0){
+						labelInformation.setText("Ce poste existe déjà, veuillez rentrez un autre libellé.");
+					}else{
+						// On rajoute à la base de données
+						String SQLAjout = "INSERT INTO poste (post_libelle, post_serv_ID) VALUES ('" + libelle +"'," + IDCombo + ")";
+						int retVal = Bdd.executeUpdate(SQLAjout);
+						labelInformation.setText("Le poste a bien été ajouté.");
+					}
+					
+				}catch (Exception e1) {
+					System.out.println(e1.getMessage());
+				}
+				
+				Bdd.closeConnexion();
+			}
+		});
+		
+		ajoutPoste.getContentPane().add(boutonAjouter);
 
 		ajoutPoste.setVisible(true);
 
