@@ -18,9 +18,9 @@ public class Programme {
 			}else{
 				System.out.println("User non connecté");
 				System.exit(0);
-			}
+			}*/
 			
-			Bdd.closeConnexion();*/
+			Bdd.closeConnexion();
 		
 			
 			//new AjoutPoste();
