@@ -8,12 +8,15 @@ import net.keepin.application.Bdd;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Color;
+import java.sql.ResultSet;
+import javax.swing.JLabel;
 
 
 
 
 public class AjoutService {
 	private JTextField libelleservice;
+	private final JLabel labelError = new JLabel("");
 
 	
 
@@ -41,15 +44,32 @@ public class AjoutService {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				
-				
-				Bdd.executeUpdate("INSERT INTO service (serv_libelle)values("+libelleservice.getText()+")");
+				String libelle = libelleservice.getText().trim();
+				Bdd.openConnexion();
+				// Vérifier si le service n'existe pas déjà:
+				String SQLQueryVerif = "SELECT COUNT(*) AS total FROM service WHERE Upper(serv_libelle) = '" + libelle.toUpperCase() +"'";
+				ResultSet SQLResultVerif = Bdd.executeQuery(SQLQueryVerif);
+				try{
+					SQLResultVerif.next();
+					if(SQLResultVerif.getInt("total")!=0){
+						labelError.setText("Ce service existe déjà, veuillez rentrez un autre libellé.");
+					}else{
+						// On rajoute à la base de données
+						String SQLAjout = "INSERT INTO service (serv_libelle) VALUES ('" + libelle +"')";
+						int retVal = Bdd.executeUpdate(SQLAjout);
+						labelError.setText("Le service a bien été ajouté.");
+					}
+					
+				}catch (Exception e1) {
+					System.out.println(e1.getMessage());
+				}
 				
 				Bdd.closeConnexion();
-				
-				
 			}
 		});
 		ajoutService.getContentPane().add(boutonAjouter);
+		labelError.setBounds(350, 453, 377, 31);
+		ajoutService.getContentPane().add(labelError);
 		
 		
 		

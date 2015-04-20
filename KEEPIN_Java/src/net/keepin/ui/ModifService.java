@@ -1,6 +1,11 @@
 package net.keepin.ui;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import javax.swing.JTextPane;
 import javax.swing.JComboBox;
+
+import net.keepin.application.Bdd;
 
 
 
@@ -12,22 +17,54 @@ public class ModifService {
 		
 		JTextPane txtpnChoixDuService = new JTextPane();
 		txtpnChoixDuService.setText("Choix du Service");
-		txtpnChoixDuService.setBounds(207, 326, 86, 20);
+		txtpnChoixDuService.setBounds(188, 326, 115, 20);
 		modifservice.getContentPane().add(txtpnChoixDuService);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(348, 326, 135, 20);
-		modifservice.getContentPane().add(comboBox);
+		JComboBox comboBoxService = new JComboBox();
+		comboBoxService.setBounds(348, 326, 135, 20);
+		modifservice.getContentPane().add(comboBoxService);
+		
+		try
+		{
+			Bdd.openConnexion();
+			String selectService = "SELECT serv_libelle FROM service";
+			ResultSet resultListServ = Bdd.executeQuery(selectService);
+			while(resultListServ.next()){
+				
+				comboBoxService.addItem(resultListServ.getString("serv_libelle"));
+				
+			}
+			
+		}catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
 		
 		JTextPane txtpnNiveauDeScurit = new JTextPane();
 		txtpnNiveauDeScurit.setText("Niveau de S\u00E9curit\u00E9");
-		txtpnNiveauDeScurit.setBounds(207, 397, 96, 20);
+		txtpnNiveauDeScurit.setBounds(188, 397, 115, 20);
 		modifservice.getContentPane().add(txtpnNiveauDeScurit);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(348, 397, 135, 20);
-		modifservice.getContentPane().add(comboBox_1);
-		modifservice.setVisible(true);
+		JComboBox comboBoxSecu = new JComboBox();
+		comboBoxSecu.setBounds(348, 397, 135, 20);
+		modifservice.getContentPane().add(comboBoxSecu);
+		
+		try
+		{
+			Bdd.openConnexion();
+			String selectNiveau = "SELECT niv_libelle FROM niveau";
+			ResultSet resultListNiv = Bdd.executeQuery(selectNiveau);
+			while(resultListNiv.next()){
+				
+				comboBoxSecu.addItem(resultListNiv.getString("niv_libelle"));
+				
+			}
+			
+		}catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		
 		
 		Bouton boutonAnnuler = new Bouton ("Annuler", 350, 128, 0);
 		modifservice.getContentPane().add(boutonAnnuler);
