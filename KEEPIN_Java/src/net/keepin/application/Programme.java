@@ -1,7 +1,12 @@
 package net.keepin.application;
 
+import net.keepin.ui.AjoutSalle;
 import net.keepin.ui.AjoutService;
 
+
+
+import net.keepin.ui.ModifService;
+import net.keepin.ui.Modifservice1;
 
 import javax.swing.JOptionPane;
 
@@ -35,13 +40,13 @@ public class Programme {
 			//new ModifPoste2();
 			//new SupprimPoste1();
 			//new SupprimPoste2();
-			new AjoutBatiment();
+			//new AjoutBatiment();
 			//new ModifBatiment();
 			//new SupprimBatiment();
 			//new AjoutEtage();
 			//new ModifEtage();
 			//new SupprimEtage();
-			//new AjoutSalle();
+			new AjoutSalle();
 			//new ModifSalle1();
 			//new SupprimSalle();
 			//new ModifEntreprise1();
@@ -49,15 +54,15 @@ public class Programme {
 			//new AjoutNiveau();
 			//new ModifNiveau();
 			//new SupprimNiveau();
-			new AjoutService();
+			//new AjoutService();
+			//new Modifservice1();
+			//new ModifService();
 			
 
 		}catch(Exception e)
 		{
 			e.printStackTrace();
 		}
-<<<<<<< HEAD
-=======
 	}
 	
 	public static void showError(String pMessage) {
@@ -67,7 +72,7 @@ public class Programme {
 	
 	public static void showWarning(String pMessage) {
 		JOptionPane.showMessageDialog(null, pMessage, "Attention!", JOptionPane.WARNING_MESSAGE);
->>>>>>> ba5cbd80f8fbe1e3a71e321073dd6971e564951a
+
 		
 	}
 
