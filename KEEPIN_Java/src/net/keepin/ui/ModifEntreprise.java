@@ -3,12 +3,12 @@ package net.keepin.ui;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class ModifEntreprise2{
+public class ModifEntreprise{
 	private JTextField txtSiret;
 	private JTextField txtAccessCorp;
 	private JTextField txtTelephone;
 
-	public ModifEntreprise2() {
+	public ModifEntreprise() {
 		Conteneur modifEntreprise2 = new Conteneur ("Modifier Entreprise");
 		JLabel lblNumroSiret = new JLabel("Num\u00E9ro Siret : ");
 		lblNumroSiret.setBounds(350, 360, 160, 25);
