@@ -9,7 +9,7 @@ public class Batiment {
 		setLibelle(pLibelle);
 	}
 	
-	private int getId() {
+	public int getId() {
 		return this.id;
 	}
 

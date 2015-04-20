@@ -1,5 +1,6 @@
 package net.keepin.application;
 
+<<<<<<< HEAD
 import net.keepin.ui.AjoutSalle;
 import net.keepin.ui.AjoutService;
 
@@ -8,10 +9,9 @@ import net.keepin.ui.AjoutService;
 import net.keepin.ui.ModifService;
 import net.keepin.ui.Modifservice1;
 
+=======
+>>>>>>> 1f4bee16f75cd0e9fab36ac98683afceb706c339
 import javax.swing.JOptionPane;
-
-import net.keepin.ui.AjoutBatiment;
-import net.keepin.ui.Connexion;
 
 
 public class Programme {
@@ -55,8 +55,11 @@ public class Programme {
 			//new ModifNiveau();
 			//new SupprimNiveau();
 			//new AjoutService();
+<<<<<<< HEAD
 			//new Modifservice1();
 			//new ModifService();
+=======
+>>>>>>> 1f4bee16f75cd0e9fab36ac98683afceb706c339
 			
 
 		}catch(Exception e)
@@ -64,7 +67,6 @@ public class Programme {
 			e.printStackTrace();
 		}
 	}
-	
 	public static void showError(String pMessage) {
 		JOptionPane.showMessageDialog(null, pMessage, "Erreur", JOptionPane.ERROR_MESSAGE);
 		
@@ -72,7 +74,10 @@ public class Programme {
 	
 	public static void showWarning(String pMessage) {
 		JOptionPane.showMessageDialog(null, pMessage, "Attention!", JOptionPane.WARNING_MESSAGE);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1f4bee16f75cd0e9fab36ac98683afceb706c339
 		
 	}
 

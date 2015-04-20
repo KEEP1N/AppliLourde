@@ -1,4 +1,7 @@
 package net.keepin.ui;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -11,6 +14,9 @@ public class Menu extends JMenuBar{
 	public Menu(){
 		this.setBounds(0, 172, 1024, 32);
 		
+		JMenu mnAccueil = new JMenu ("Accueil");
+		this.add(mnAccueil);
+		
 		JMenu mnEntreprise = new JMenu("Entreprise");
 		this.add(mnEntreprise);
 		
@@ -21,7 +27,14 @@ public class Menu extends JMenuBar{
 		this.add(mnPoste);
 		
 		JMenuItem mntmAjouterUnPoste = new JMenuItem("Ajouter un poste");
+		mntmAjouterUnPoste.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new AjoutPoste();
+			}
+		});
 		mnPoste.add(mntmAjouterUnPoste);
+		
+		
 		
 		JMenuItem mntmModifierUnPoste = new JMenuItem("Modifier un poste");
 		mnPoste.add(mntmModifierUnPoste);
@@ -86,6 +99,10 @@ public class Menu extends JMenuBar{
 		
 		JMenuItem mntmSupprimerUnSalle = new JMenuItem("Supprimer une salle");
 		mnSalle.add(mntmSupprimerUnSalle);
+		
+		JMenu sedeconnect = new JMenu("");
+		sedeconnect .setIcon(new ImageIcon("C:\\wamp\\www\\KEEPIN\\Web\\SiteKEEPIN\\image\\power.png"));
+		this.add(sedeconnect);
 	}
 
 }
