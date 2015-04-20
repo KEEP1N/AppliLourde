@@ -15,8 +15,8 @@ import java.sql.Statement;
 
 public class AjoutSalle{
 	private JTextField textFieldLibelle;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField Eta_champText;
+	private JTextField Bati_champText;
 
 	public AjoutSalle() {
 		Conteneur ajoutSalle = new Conteneur ("Ajouter une salle");
@@ -63,17 +63,17 @@ public class AjoutSalle{
 		
 		ajoutSalle.getContentPane().add(boutonAjouter);
 		
-		textField = new JTextField();
-		textField.setEditable(false);
-		textField.setBounds(669, 450, 86, 25);
-		ajoutSalle.getContentPane().add(textField);
-		textField.setColumns(10);
+		Eta_champText = new JTextField();
+		Eta_champText.setEditable(false);
+		Eta_champText.setBounds(669, 450, 86, 25);
+		ajoutSalle.getContentPane().add(Eta_champText);
+		Eta_champText.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setEditable(false);
-		textField_1.setBounds(500, 450, 144, 25);
-		ajoutSalle.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
+		Bati_champText = new JTextField();
+		Bati_champText.setEditable(false);
+		Bati_champText.setBounds(500, 450, 144, 25);
+		ajoutSalle.getContentPane().add(Bati_champText);
+		Bati_champText.setColumns(10);
 		
 		
 

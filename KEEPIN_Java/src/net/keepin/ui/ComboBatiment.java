@@ -4,7 +4,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JComboBox;
-
 import net.keepin.application.Bdd;
 import net.keepin.table.Batiment;
 

@@ -12,7 +12,7 @@ public class Programme {
 		try
 		{
 			Connexion uneConnexion = new Connexion();
-			
+
 			uneConnexion.setVisible(true);
 			if(uneConnexion.getValue()){
 				//Connexion Ok
@@ -22,9 +22,8 @@ public class Programme {
 				System.out.println("User non connecté");
 				System.exit(0);
 			}
-			
+
 			Bdd.closeConnexion();
-			
 
 		}catch(Exception e)
 		{
@@ -33,12 +32,13 @@ public class Programme {
 	}
 	public static void showError(String pMessage) {
 		JOptionPane.showMessageDialog(null, pMessage, "Erreur", JOptionPane.ERROR_MESSAGE);
-		
+
 	}
-	
+
 	public static void showWarning(String pMessage) {
 		JOptionPane.showMessageDialog(null, pMessage, "Attention!", JOptionPane.WARNING_MESSAGE);
-		
+
+
 	}
 
 }

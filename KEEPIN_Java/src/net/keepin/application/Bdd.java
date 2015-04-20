@@ -12,6 +12,8 @@ public class Bdd {
 			Class.forName("com.mysql.jdbc.Driver");
 			String url = "jdbc:mysql://172.16.100.120/Keepin1";
 			connDb = DriverManager.getConnection(url, "root", "toor");
+
+
 			if (connDb != null){
 				System.out.println("DataBase connectée");
 			}
@@ -45,6 +47,7 @@ public class Bdd {
 		return retVal;
 	}
 
+
 	public static int executeUpdate(String pSQLUpdate) {
 		// A utiliser pour toutes les requêtes de type INSERT, DELETE et UPDATE
 		Statement stmt = null;
@@ -57,10 +60,7 @@ public class Bdd {
 		}
 
 		return retVal;
-
-
 	}
-
 	public static String hashMd5(String strToHash) {
 		String retVal = new String ("");
 		if(strToHash.equals("")){
@@ -78,6 +78,5 @@ public class Bdd {
 		}
 		return retVal;
 	}
-
 
 }
