@@ -1,7 +1,6 @@
 package net.keepin.table;
 
 public class Service {
-<<<<<<< HEAD
 	private int id;
 	private String libelle;
 	
@@ -26,9 +25,4 @@ public class Service {
 	{
 		return getLibelle();
 	}
-
-
-=======
-	
->>>>>>> origin/master
 }

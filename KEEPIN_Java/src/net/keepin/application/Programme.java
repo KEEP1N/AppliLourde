@@ -1,11 +1,6 @@
 package net.keepin.application;
 
-import net.keepin.ui.AjoutService;
-
-
 import javax.swing.JOptionPane;
-
-import net.keepin.ui.SupprimBatiment;
 
 
 public class Programme {
@@ -36,7 +31,7 @@ public class Programme {
 			//new SupprimPoste2();
 			//new AjoutBatiment();
 			//new ModifBatiment();
-			new SupprimBatiment();
+			//new SupprimBatiment();
 			//new AjoutEtage();
 			//new ModifEtage();
 			//new SupprimEtage();
@@ -48,17 +43,14 @@ public class Programme {
 			//new AjoutNiveau();
 			//new ModifNiveau();
 			//new SupprimNiveau();
-			new AjoutService();
+			//new AjoutService();
 			
 
 		}catch(Exception e)
 		{
 			e.printStackTrace();
 		}
-<<<<<<< HEAD
-=======
 	}
-	
 	public static void showError(String pMessage) {
 		JOptionPane.showMessageDialog(null, pMessage, "Erreur", JOptionPane.ERROR_MESSAGE);
 		
@@ -66,7 +58,6 @@ public class Programme {
 	
 	public static void showWarning(String pMessage) {
 		JOptionPane.showMessageDialog(null, pMessage, "Attention!", JOptionPane.WARNING_MESSAGE);
->>>>>>> ba5cbd80f8fbe1e3a71e321073dd6971e564951a
 		
 	}
 
