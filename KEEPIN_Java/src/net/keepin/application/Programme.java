@@ -1,12 +1,7 @@
 package net.keepin.application;
 
-
-import net.keepin.ui.AjoutSalle;
-import net.keepin.ui.AjoutService;
-
-
-
-import net.keepin.ui.ModifService;
+import net.keepin.ui.Accueil;
+import net.keepin.ui.Connexion;
 import javax.swing.JOptionPane;
 
 
@@ -16,43 +11,19 @@ public class Programme {
 		Bdd.openConnexion();
 		try
 		{
-			/*Connexion uneConnexion = new Connexion();
+			Connexion uneConnexion = new Connexion();
 			
 			uneConnexion.setVisible(true);
 			if(uneConnexion.getValue()){
 				//Connexion Ok
 				System.out.println("User connecté");
+				new Accueil();
 			}else{
 				System.out.println("User non connecté");
 				System.exit(0);
-			}*/
+			}
 			
 			Bdd.closeConnexion();
-		
-			
-			//new AjoutPoste();
-			
-			//new ModifPoste1();
-			//new ModifPoste2();
-			//new SupprimPoste1();
-			//new SupprimPoste2();
-			//new AjoutBatiment();
-			//new ModifBatiment();
-			//new SupprimBatiment();
-			//new AjoutEtage();
-			//new ModifEtage();
-			//new SupprimEtage();
-			new AjoutSalle();
-			//new ModifSalle1();
-			//new SupprimSalle();
-			//new ModifEntreprise1();
-			//new ModifEntreprise2();
-			//new AjoutNiveau();
-			//new ModifNiveau();
-			//new SupprimNiveau();
-			//new AjoutService();
-			//new Modifservice1();
-			//new ModifService();
 			
 
 		}catch(Exception e)
