@@ -1,5 +1,7 @@
 package net.keepin.application;
 
+import net.keepin.ui.AjoutService;
+
 
 import javax.swing.JOptionPane;
 
@@ -9,6 +11,7 @@ import net.keepin.ui.SupprimBatiment;
 public class Programme {
 
 	public static void main(String[] args) {
+		Bdd.openConnexion();
 		try
 		{
 			/*Connexion uneConnexion = new Connexion();
@@ -45,12 +48,15 @@ public class Programme {
 			//new AjoutNiveau();
 			//new ModifNiveau();
 			//new SupprimNiveau();
+			new AjoutService();
 			
 
 		}catch(Exception e)
 		{
 			e.printStackTrace();
 		}
+<<<<<<< HEAD
+=======
 	}
 	
 	public static void showError(String pMessage) {
@@ -60,6 +66,7 @@ public class Programme {
 	
 	public static void showWarning(String pMessage) {
 		JOptionPane.showMessageDialog(null, pMessage, "Attention!", JOptionPane.WARNING_MESSAGE);
+>>>>>>> ba5cbd80f8fbe1e3a71e321073dd6971e564951a
 		
 	}
 
