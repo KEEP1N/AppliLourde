@@ -88,17 +88,17 @@ public class AjoutNiveau{
 		cbxService.setBounds(500, 360, 160, 25);
 		ajoutNiveau.getContentPane().add(cbxService);
 
-		JComboBox cbxBatiment = new JComboBox();
+		JComboBox cbxBatiment = new ComboBatiment();
 		cbxBatiment.setToolTipText("");
 		cbxBatiment.setBounds(500, 410, 100, 25);
 		ajoutNiveau.getContentPane().add(cbxBatiment);
 
-		JComboBox cbxEtage = new JComboBox();
+		JComboBox cbxEtage = new ComboEtage();
 		cbxEtage.setToolTipText("");
 		cbxEtage.setBounds(625, 410, 75, 25);
 		ajoutNiveau.getContentPane().add(cbxEtage);
 
-		JComboBox cbxSalle = new JComboBox();
+		JComboBox cbxSalle = new ComboSalle();
 		cbxSalle.setToolTipText("");
 		cbxSalle.setBounds(725, 410, 100, 25);
 		ajoutNiveau.getContentPane().add(cbxSalle);
