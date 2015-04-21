@@ -4,6 +4,9 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import net.keepin.application.Bdd;
+import net.keepin.table.Batiment;
+import net.keepin.table.Etage;
+import net.keepin.table.Service;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -39,10 +42,12 @@ public class AjoutSalle{
 		textFieldLibelle.setColumns(10);
 		
 		final ComboEtage comboBoxEtage = new ComboEtage();
+		
 		comboBoxEtage.setBounds(500, 400, 160, 25);
 		ajoutSalle.getContentPane().add(comboBoxEtage);
 		
 		final ComboBatiment comboBoxBatiment = new ComboBatiment();
+		
 		comboBoxBatiment.setBounds(500, 350, 160, 25);
 		ajoutSalle.getContentPane().add(comboBoxBatiment);
 		
@@ -55,9 +60,29 @@ public class AjoutSalle{
 			
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
+				int IDcombobat = ((Batiment)comboBoxBatiment.getSelectedItem()).getId();
+				int IDcomboeta = ((Etage)comboBoxEtage.getSelectedItem()).getId();
+				String libelle = textFieldLibelle.getText().trim();
+				
 				Bdd.openConnexion();
+				String SQLQueryVerif = "SELECT COUNT(*) AS total FROM porte WHERE Upper(port_libelle) = '" + libelle.toUpperCase() +"'";
+				ResultSet SQLResultVerif = Bdd.executeQuery(SQLQueryVerif);
+				try{
+					SQLResultVerif.next();
+					if(SQLResultVerif.getInt("total")!=0){
+						labelInformation.setText("Cette porte existe déjà, veuillez rentrez un autre libellé.");
+					}else{
+						// On rajoute à la base de données
+						String SQLAjout = "INSERT INTO poste (post_libelle, post_serv_ID) VALUES ('" + libelle +"'," + IDcombobat +"',"+IDcomboeta+ ")";
+						int retVal = Bdd.executeUpdate(SQLAjout);
+						labelInformation.setText("La porte a bien été ajouté.");
+					}
+					
+				}catch (Exception e1) {
+					System.out.println(e1.getMessage());
+				}
 				
-				
+				Bdd.closeConnexion();
 			}
 		});
 		
@@ -75,10 +100,13 @@ public class AjoutSalle{
 		ajoutSalle.getContentPane().add(Bati_champText);
 		Bati_champText.setColumns(10);
 		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setBounds(471, 551, 46, 14);
+		ajoutSalle.getContentPane().add(lblNewLabel);
+		
 		
 
 		ajoutSalle.setVisible(true);
 
 	}
-
 }
