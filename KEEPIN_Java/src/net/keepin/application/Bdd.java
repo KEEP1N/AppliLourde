@@ -10,7 +10,7 @@ public class Bdd {
 	public static void openConnexion(){
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://172.16.100.120/Keepin1";
+			String url = "jdbc:mysql://192.168.56.101/Keepin";
 			connDb = DriverManager.getConnection(url, "root", "toor");
 
 
@@ -77,6 +77,6 @@ public class Bdd {
 			}
 		}
 		return retVal;
-	}
+	} 
 
 }
