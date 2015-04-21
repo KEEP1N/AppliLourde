@@ -57,25 +57,29 @@ public class AjoutPoste {
 				String libelle = textFieldLibelle.getText().trim();
 
 				Bdd.openConnexion();
-				String SQLQueryVerif = "SELECT COUNT(*) AS total FROM poste WHERE Upper(post_libelle) = '" + libelle.toUpperCase() +"'";
-				ResultSet SQLResultVerif = Bdd.executeQuery(SQLQueryVerif);
-				try{
-					SQLResultVerif.next();
-					if(SQLResultVerif.getInt("total")!=0){
-						Programme.showWarning("Ce poste existe déjà, veuillez rentrez un autre libellé.");
-					}else{
-						// On rajoute à la base de données
-						String SQLAjout = "INSERT INTO poste (post_libelle, post_serv_ID) VALUES ('" + libelle +"'," + IDCombo + ")";
-						int retVal = Bdd.executeUpdate(SQLAjout);
-						Programme.showInformation("Le poste a bien été ajouté.");
-						ajoutPoste.dispose();
+				if (libelle.equals("")){
+					Programme.showWarning("Le champ libellé est obligatoire!");
+				}else{
+					String SQLQueryVerif = "SELECT COUNT(*) AS total FROM poste WHERE Upper(post_libelle) = '" + libelle.toUpperCase() +"'";
+					ResultSet SQLResultVerif = Bdd.executeQuery(SQLQueryVerif);
+					try{
+						SQLResultVerif.next();
+						if(SQLResultVerif.getInt("total")!=0){
+							Programme.showWarning("Ce poste existe déjà, veuillez rentrez un autre libellé.");
+						}else{
+							// On rajoute à la base de données
+							String SQLAjout = "INSERT INTO poste (post_libelle, post_serv_ID) VALUES ('" + libelle +"'," + IDCombo + ")";
+							int retVal = Bdd.executeUpdate(SQLAjout);
+							Programme.showInformation("Le poste a bien été ajouté.");
+							ajoutPoste.dispose();
+						}
+
+					}catch (Exception e1) {
+						System.out.println(e1.getMessage());
 					}
 
-				}catch (Exception e1) {
-					System.out.println(e1.getMessage());
+					Bdd.closeConnexion();
 				}
-
-				Bdd.closeConnexion();
 			}
 		});
 

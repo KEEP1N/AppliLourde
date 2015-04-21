@@ -53,27 +53,30 @@ public class ModifBatiment{
 				String libelle = textFieldLibelle.getText().trim();
 
 				Bdd.openConnexion();
-				String SQLQueryVerif = "SELECT COUNT(*) AS total FROM batiment WHERE Upper(bat_libelle) = '" + libelle.toUpperCase() +"'";
-				ResultSet SQLResultVerif = Bdd.executeQuery(SQLQueryVerif);
-				try{
-					SQLResultVerif.next();
-					if(SQLResultVerif.getInt("total")!=0){
-						Programme.showWarning("Ce bâtiment existe déjà, veuillez rentrez un autre libellé.");
-					}else{
-						// On modifie l'élément de la base de données
-						String SQLModif = "UPDATE batiment SET bat_libelle = '" + libelle + "' WHERE bat_ID =" + IDCombo;
-						int retVal = Bdd.executeUpdate(SQLModif);
-						Programme.showInformation("Le bâtiment a bien été modifié.");
-						modifBatiment.dispose();
+				if (libelle.equals("")){
+					Programme.showWarning("Le champ libellé est obligatoire!");
+				}else{
+					String SQLQueryVerif = "SELECT COUNT(*) AS total FROM batiment WHERE Upper(bat_libelle) = '" + libelle.toUpperCase() +"'";
+					ResultSet SQLResultVerif = Bdd.executeQuery(SQLQueryVerif);
+					try{
+						SQLResultVerif.next();
+						if(SQLResultVerif.getInt("total")!=0){
+							Programme.showWarning("Ce bâtiment existe déjà, veuillez rentrez un autre libellé.");
+						}else{
+							// On modifie l'élément de la base de données
+							String SQLModif = "UPDATE batiment SET bat_libelle = '" + libelle + "' WHERE bat_ID =" + IDCombo;
+							int retVal = Bdd.executeUpdate(SQLModif);
+							Programme.showInformation("Le bâtiment a bien été modifié.");
+							modifBatiment.dispose();
+						}
+
+					}catch (Exception e1) {
+						System.out.println(e1.getMessage());
 					}
 
-				}catch (Exception e1) {
-					System.out.println(e1.getMessage());
+					Bdd.closeConnexion();
 				}
-
-				Bdd.closeConnexion();
-			}		
-
+			}
 		});
 		modifBatiment.getContentPane().add(boutonModifier);
 

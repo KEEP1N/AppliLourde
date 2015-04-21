@@ -53,26 +53,31 @@ public class ModifEtage{
 			public void mouseClicked(MouseEvent e) {
 				int IDCombo = ((Etage) comboBoxEtage.getSelectedItem()).getId();;
 				String libelle = textFieldLibelle.getText().trim();
-				Bdd.openConnexion();
-				String SQLQueryVerif = "SELECT COUNT(*) AS total FROM etage WHERE Upper(eta_libelle) = '" + libelle.toUpperCase() +"'";
-				ResultSet SQLResultVerif = Bdd.executeQuery(SQLQueryVerif);
-				try{
-					SQLResultVerif.next();
-					if(SQLResultVerif.getInt("total")!=0){
-						Programme.showWarning("Cet étage existe déjà, veuillez rentrez un autre libellé.");
-					}else{
-						// On modifie l'élément de la base de données
-						String SQLModif = "UPDATE etage SET eta_libelle = '" + libelle + "' WHERE eta_ID =" + IDCombo;
-						int retVal = Bdd.executeUpdate(SQLModif);
-						Programme.showInformation("L'étage a bien été modifié.");
-						modifEtage.dispose();
+
+				if (libelle.equals("")){
+					Programme.showWarning("Le champ libellé est obligatoire!");
+				}else{
+					Bdd.openConnexion();
+					String SQLQueryVerif = "SELECT COUNT(*) AS total FROM etage WHERE Upper(eta_libelle) = '" + libelle.toUpperCase() +"'";
+					ResultSet SQLResultVerif = Bdd.executeQuery(SQLQueryVerif);
+					try{
+						SQLResultVerif.next();
+						if(SQLResultVerif.getInt("total")!=0){
+							Programme.showWarning("Cet étage existe déjà, veuillez rentrez un autre libellé.");
+						}else{
+							// On modifie l'élément de la base de données
+							String SQLModif = "UPDATE etage SET eta_libelle = '" + libelle + "' WHERE eta_ID =" + IDCombo;
+							int retVal = Bdd.executeUpdate(SQLModif);
+							Programme.showInformation("L'étage a bien été modifié.");
+							modifEtage.dispose();
+						}
+
+					}catch (Exception e1) {
+						System.out.println(e1.getMessage());
 					}
 
-				}catch (Exception e1) {
-					System.out.println(e1.getMessage());
+					Bdd.closeConnexion();
 				}
-
-				Bdd.closeConnexion();
 			}
 		});
 		modifEtage.getContentPane().add(boutonModifier);
