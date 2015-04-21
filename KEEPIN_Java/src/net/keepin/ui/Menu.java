@@ -14,14 +14,6 @@ public class Menu extends JMenuBar{
 	public Menu(){
 		this.setBounds(0, 172, 1024, 32);
 		
-		JMenu mnAccueil = new JMenu ("Accueil");
-		mnAccueil.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				new Accueil();
-			}
-		});
-		this.add(mnAccueil);
-		
 		JMenu mnEntreprise = new JMenu("Entreprise");
 		this.add(mnEntreprise);
 		
@@ -122,7 +114,7 @@ public class Menu extends JMenuBar{
 		});
 		mnNiveau.add(mntmSupprimerUnNiveau);
 		
-		JMenu mnBatiment = new JMenu("Batiment");
+		JMenu mnBatiment = new JMenu("Bâtiment");
 		this.add(mnBatiment);
 		
 		JMenuItem mntmAjouterBatiment = new JMenuItem("Ajouter un bâtiment");
@@ -151,7 +143,7 @@ public class Menu extends JMenuBar{
 		});
 		mnBatiment.add(mntmSupprimerBatiment);
 		
-		JMenu mnEtage = new JMenu("Etage");
+		JMenu mnEtage = new JMenu("Étage");
 		this.add(mnEtage);
 		
 		JMenuItem mntmAjouterEtage = new JMenuItem("Ajouter un étage");
