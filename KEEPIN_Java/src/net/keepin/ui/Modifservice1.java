@@ -17,11 +17,11 @@ import javax.swing.JComboBox;
 
 import net.keepin.application.Bdd;
 
-public class Modifservice1 extends JFrame {
+public class ModifService1 extends JFrame {
 	private JTextField txtRechercher;
 	private JPanel contentPane;
 	
-	public Modifservice1(){
+	public ModifService1(){
 	Conteneur modifService1 = new Conteneur ("Modifier un Service");
 
 	JLabel labelServiceRecherche = new JLabel("Quel Service?");

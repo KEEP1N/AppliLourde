@@ -1,11 +1,12 @@
 package net.keepin.ui;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
 import net.keepin.application.Bdd;
+import net.keepin.application.Programme;
 import net.keepin.table.Batiment;
-import net.keepin.table.Service;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.ResultSet;
@@ -35,17 +36,11 @@ public class ModifBatiment{
 		labelLibelle.setBounds(350, 400, 160, 25);
 		modifBatiment.getContentPane().add(labelLibelle);
 
-		final JLabel labelInformation = new JLabel("");
-		labelInformation.setHorizontalAlignment(SwingConstants.CENTER);
-		labelInformation.setBounds(288, 463, 518, 50);
-		modifBatiment.getContentPane().add(labelInformation);
-
-
 		Bouton boutonAnnuler = new Bouton("Annuler", 350, 128, 0);
 		boutonAnnuler.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				modifBatiment.validate();
+				modifBatiment.dispose();
 			}
 		});
 		modifBatiment.getContentPane().add(boutonAnnuler);
@@ -63,12 +58,13 @@ public class ModifBatiment{
 				try{
 					SQLResultVerif.next();
 					if(SQLResultVerif.getInt("total")!=0){
-						labelInformation.setText("Ce bâtiment existe déjà, veuillez rentrez un autre libellé.");
+						Programme.showWarning("Ce bâtiment existe déjà, veuillez rentrez un autre libellé.");
 					}else{
-						// On rajoute à la base de données
-						String SQLAjout = "UPDATE batiment SET bat_libelle = '" + libelle + "' WHERE bat_ID =" + IDCombo;
-						int retVal = Bdd.executeUpdate(SQLAjout);
-						labelInformation.setText("Le bâtiment a bien été modifié.");
+						// On modifie l'élément de la base de données
+						String SQLModif = "UPDATE batiment SET bat_libelle = '" + libelle + "' WHERE bat_ID =" + IDCombo;
+						int retVal = Bdd.executeUpdate(SQLModif);
+						Programme.showInformation("Le bâtiment a bien été modifié.");
+						modifBatiment.dispose();
 					}
 
 				}catch (Exception e1) {

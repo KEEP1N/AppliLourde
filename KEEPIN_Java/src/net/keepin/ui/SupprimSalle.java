@@ -5,7 +5,7 @@ import javax.swing.JLabel;
 public class SupprimSalle{
 		
 	public SupprimSalle() {
-		Conteneur supprSalle = new Conteneur ("Ajouter une salle");
+		Conteneur supprSalle = new Conteneur ("Supprimer une salle");
 
 		JLabel lblBtiment = new JLabel("B\u00E2timent:");
 		lblBtiment.setBounds(350, 350, 160, 25);

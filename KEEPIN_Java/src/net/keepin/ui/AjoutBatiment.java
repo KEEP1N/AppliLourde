@@ -4,6 +4,7 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 
 import net.keepin.application.Bdd;
+import net.keepin.application.Programme;
 import net.keepin.table.Batiment;
 
 import java.awt.Label;
@@ -18,7 +19,7 @@ public class AjoutBatiment{
 	private JTextField textFieldLibelle;
 
 	public AjoutBatiment() {
-		Conteneur ajoutBatiment = new Conteneur("Ajouter un bâtiment");
+		final Conteneur ajoutBatiment = new Conteneur("Ajouter un bâtiment");
 		
 		textFieldLibelle = new JTextField();
 		textFieldLibelle.setColumns(10);
@@ -30,16 +31,10 @@ public class AjoutBatiment{
 		labelLibelle.setBounds(350, 350, 56, 25);
 		ajoutBatiment.getContentPane().add(labelLibelle);
 		
-		final JLabel labelInformation = new JLabel("");
-		labelInformation.setHorizontalAlignment(SwingConstants.CENTER);
-		labelInformation.setBounds(288, 463, 518, 50);
-		ajoutBatiment.getContentPane().add(labelInformation);
-		
 		Bouton boutonAjouter = new Bouton("Ajouter", 630, 0, 128);
 		boutonAjouter.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				
 				String libelle = textFieldLibelle.getText().trim();
 				Bdd.openConnexion();
 				// Vérifier si le bâtiment n'existe pas déjà:
@@ -48,12 +43,13 @@ public class AjoutBatiment{
 				try{
 					SQLResultVerif.next();
 					if(SQLResultVerif.getInt("total")!=0){
-						labelInformation.setText("Ce bâtiment existe déjà, veuillez rentrez un autre libellé.");
+						Programme.showWarning("Ce bâtiment existe déjà, veuillez rentrez un autre libellé.");
 					}else{
 						// On rajoute à la base de données
 						String SQLAjout = "INSERT INTO batiment (bat_libelle) VALUES ('" + libelle +"')";
 						int retVal = Bdd.executeUpdate(SQLAjout);
-						labelInformation.setText("Le bâtiment a bien été ajouté.");
+						Programme.showInformation("Le bâtiment a bien été ajouté.");
+						ajoutBatiment.dispose();
 					}
 					
 				}catch (Exception e1) {
@@ -68,6 +64,12 @@ public class AjoutBatiment{
 		ajoutBatiment.getContentPane().add(boutonAjouter);
 		
 		Bouton boutonAnnuler = new Bouton("Annuler", 350, 128, 0);
+		boutonAnnuler.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ajoutBatiment.dispose();
+			}
+		});
 		ajoutBatiment.getContentPane().add(boutonAnnuler);
 		
 		
