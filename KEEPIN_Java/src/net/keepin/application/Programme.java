@@ -37,8 +37,10 @@ public class Programme {
 
 	public static void showWarning(String pMessage) {
 		JOptionPane.showMessageDialog(null, pMessage, "Attention!", JOptionPane.WARNING_MESSAGE);
-
-
+	}
+	
+	public static void showInformation(String pMessage){
+		JOptionPane.showMessageDialog(null, pMessage, "Informations", JOptionPane.INFORMATION_MESSAGE);
 	}
 
 }
