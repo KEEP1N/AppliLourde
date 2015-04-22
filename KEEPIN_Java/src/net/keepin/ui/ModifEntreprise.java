@@ -89,12 +89,14 @@ public class ModifEntreprise{
 		boutonAjouter.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				// Regex pour numéro de téléphone
 				Pattern telOk = Pattern.compile("^((\\+|00)33\\s?|0)[1-9](\\s?\\d{2}){4}$");
 
 				String nom = txtNom.getText().trim().replaceAll("\'", "\\\\'");
 				String tel = txtTelephone.getText().trim();
 				String raisonSociale = textFieldRS.getText().trim();
-
+				
+				//On vérifie que ce qu'à rentrer l'utilisateur correspond au Regex
 				Matcher m = telOk.matcher(tel);
 				final boolean result = m.matches();
 

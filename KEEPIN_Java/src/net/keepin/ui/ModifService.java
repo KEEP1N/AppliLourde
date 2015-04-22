@@ -50,7 +50,7 @@ public class ModifService{
 		boutonModifier.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				int IDCombo = ((Service) comboBoxService.getSelectedItem()).getId();;
+				int IDCombo = ((Service) comboBoxService.getSelectedItem()).getId();
 				String libelle = textFieldLibelle.getText().trim();
 
 				Bdd.openConnexion();

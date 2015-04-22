@@ -14,7 +14,6 @@ public class ComboService extends JComboBox<Service>{
 
 	public ComboService()
 	{
-		Bdd.openConnexion();
 		int ID;
 		String libelle;
 		try
@@ -26,12 +25,12 @@ public class ComboService extends JComboBox<Service>{
 				libelle = resultListServ.getString("serv_libelle");
 				this.addItem(new Service(ID, libelle));
 			}
+			resultListServ.close();
 		
 		}catch(SQLException e)
 		{
 			e.printStackTrace();
 		}
-		Bdd.closeConnexion();
 	}
 
 }
