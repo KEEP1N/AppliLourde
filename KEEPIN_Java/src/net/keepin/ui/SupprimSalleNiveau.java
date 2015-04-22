@@ -17,11 +17,11 @@ public class SupprimSalleNiveau{
 		Conteneur supprSalleNiveau = new Conteneur ("Modifier une salle associée à un niveau");
 		supprSalleNiveau.setTitle("Modifier une salle associée à un niveau");
 		JLabel lblNiveau = new JLabel("Selectionner Niveau :");
-		lblNiveau.setBounds(350, 310, 160, 25);
+		lblNiveau.setBounds(350, 360, 160, 25);
 		supprSalleNiveau.getContentPane().add(lblNiveau);
 
 		JLabel lblService = new JLabel("Service : ");
-		lblService.setBounds(350, 360, 160, 25);
+		lblService.setBounds(350, 310, 160, 25);
 		supprSalleNiveau.getContentPane().add(lblService);
 
 		JLabel lblSalle = new JLabel("Selctionner Salle");
@@ -31,11 +31,11 @@ public class SupprimSalleNiveau{
 		
 		
 		final ComboNiveau cbxNiveau = new ComboNiveau();
-		cbxNiveau.setBounds(500, 310, 160, 25);
+		cbxNiveau.setBounds(500, 360, 160, 25);
 		supprSalleNiveau.getContentPane().add(cbxNiveau);
 		
 		final ComboService cbxService = new ComboService();
-		cbxService.setBounds(500, 360, 160, 25);
+		cbxService.setBounds(500, 310, 160, 25);
 		supprSalleNiveau.getContentPane().add(cbxService);
 		
 		final ComboBatiment cbxBatiment = new ComboBatiment();
@@ -53,8 +53,14 @@ public class SupprimSalleNiveau{
 		cbxSalle.setBounds(725, 410, 100, 25);
 		supprSalleNiveau.getContentPane().add(cbxSalle);
 		
-		Bouton boutonAnnuler = new Bouton ("Annuler", 350, 128, 0);
-		supprSalleNiveau.getContentPane().add(boutonAnnuler);
+		Bouton boutonAnnuler = new Bouton("Annuler", 350, 128, 0);
+		boutonAnnuler.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				supprSalleNiveau.dispose();
+			}
+		});
+	supprSalleNiveau.getContentPane().add(boutonAnnuler);
 
 		Bouton boutonSupprimer = new Bouton("Supprimer", 630, 0, 128);
 		boutonSupprimer.addMouseListener(new MouseAdapter() {
@@ -90,7 +96,7 @@ public class SupprimSalleNiveau{
 				}		
 			}
 		});
-
+		supprSalleNiveau.getContentPane().add(boutonSupprimer);
 		supprSalleNiveau.setVisible(true);
 
 	}

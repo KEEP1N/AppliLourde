@@ -17,11 +17,11 @@ public class AjoutSalleNiveau{
 		ajoutSalleNiveau.setTitle("Ajouter une Salle à un Niveau");
 
 		JLabel lblNiveau = new JLabel("Niveau : ");
-		lblNiveau.setBounds(355, 310, 160, 25);
+		lblNiveau.setBounds(355, 360, 160, 25);
 		ajoutSalleNiveau.getContentPane().add(lblNiveau);
 
 		JLabel lblService = new JLabel("Service :");
-		lblService.setBounds(355, 360, 160, 25);
+		lblService.setBounds(355, 310, 160, 25);
 		ajoutSalleNiveau.getContentPane().add(lblService);
 
 		JLabel lblSalle = new JLabel("Salle : ");
@@ -33,26 +33,12 @@ public class AjoutSalleNiveau{
 		labelInformation.setBounds(288, 463, 518, 50);
 		ajoutSalleNiveau.getContentPane().add(labelInformation);
 
-		Bouton boutonAjouter = new Bouton("Ajouter", 630, 0, 128);
-
-		boutonAjouter.setBounds(630, 640, 115, 40);
-		ajoutSalleNiveau.getContentPane().add(boutonAjouter);
-
-		Bouton boutonAnnuler = new Bouton("Annuler", 350, 128, 0);
-		boutonAnnuler.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				ajoutSalleNiveau.dispose();
-			}
-		});
-		ajoutSalleNiveau.getContentPane().add(boutonAnnuler);
-
 		final ComboNiveau cbxNiveau = new ComboNiveau();
-		cbxNiveau.setBounds(500, 310, 160, 25);
+		cbxNiveau.setBounds(500, 360, 160, 25);
 		ajoutSalleNiveau.getContentPane().add(cbxNiveau);
 
 		final ComboService cbxService = new ComboService();
-		cbxService.setBounds(500, 360, 160, 25);
+		cbxService.setBounds(500, 310, 160, 25);
 		ajoutSalleNiveau.getContentPane().add(cbxService);
 
 		final ComboBatiment cbxBatiment = new ComboBatiment();
@@ -79,7 +65,20 @@ public class AjoutSalleNiveau{
 		btnMark.setIcon(new ImageIcon("C:\\wamp\\www\\KeepIn\\Web\\SiteKEEPIN\\image\\mark.png"));
 		btnMark.setBounds(900, 410, 25, 25);
 		ajoutSalleNiveau.getContentPane().add(btnMark);
+		
 
+		Bouton boutonAjouter = new Bouton("Ajouter", 630, 0, 128);
+		ajoutSalleNiveau.getContentPane().add(boutonAjouter);
+
+		Bouton boutonAnnuler = new Bouton("Annuler", 350, 128, 0);
+		boutonAnnuler.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ajoutSalleNiveau.dispose();
+			}
+		});
+		ajoutSalleNiveau.getContentPane().add(boutonAnnuler);
+		
 		ajoutSalleNiveau.setVisible(true);
 	}
 }

@@ -14,17 +14,32 @@ import net.keepin.table.Etage;
 public class SupprimNiveau{
 	
 	public SupprimNiveau() {
-		Conteneur supprNiveau = new Conteneur ("Modifier Entreprise");
+		Conteneur supprNiveau = new Conteneur ("Supprimer Niveau");
 		supprNiveau.setTitle("Supprimer Niveau");
-		JLabel lblNiveau = new JLabel("Selectionner Niveau :");
-		lblNiveau.setBounds(350, 400, 160, 25);
+		
+		JLabel lblNiveau = new JLabel("Niveau :");
+		lblNiveau.setBounds(350, 360, 160, 25);
 		supprNiveau.getContentPane().add(lblNiveau);
+
+		JLabel lblService = new JLabel("Service : ");
+		lblService.setBounds(350, 310, 160, 25);
+		supprNiveau.getContentPane().add(lblService);
 		
 		final ComboNiveau cbxNiveau = new ComboNiveau();
-		cbxNiveau.setBounds(500, 400, 160, 25);
+		cbxNiveau.setBounds(500, 360, 160, 25);
 		supprNiveau.getContentPane().add(cbxNiveau);
+		
+		final ComboService cbxService = new ComboService();
+		cbxService.setBounds(500, 310, 160, 25);
+		supprNiveau.getContentPane().add(cbxService);
 
-		Bouton boutonAnnuler = new Bouton ("Annuler", 350, 128, 0);
+		Bouton boutonAnnuler = new Bouton("Annuler", 350, 128, 0);
+		boutonAnnuler.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				supprNiveau.dispose();
+			}
+		});
 		supprNiveau.getContentPane().add(boutonAnnuler);
 
 		Bouton boutonSupprimer = new Bouton("Supprimer", 630, 0, 128);

@@ -3,10 +3,12 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Color;
 import java.sql.ResultSet;
+
 import net.keepin.application.Bdd;
 
 
@@ -19,11 +21,11 @@ public class AjoutNiveau{
 		ajoutNiveau.setTitle("Ajouter un Niveau");
 
 		JLabel lblLibelle = new JLabel("Libelle : ");
-		lblLibelle.setBounds(355, 310, 160, 25);
+		lblLibelle.setBounds(355, 360, 160, 25);
 		ajoutNiveau.getContentPane().add(lblLibelle);
 
 		JLabel lblService = new JLabel("Service :");
-		lblService.setBounds(355, 360, 160, 25);
+		lblService.setBounds(355, 310, 160, 25);
 		ajoutNiveau.getContentPane().add(lblService);
 
 
@@ -32,6 +34,15 @@ public class AjoutNiveau{
 		labelInformation.setBounds(288, 463, 518, 50);
 		ajoutNiveau.getContentPane().add(labelInformation);
 
+		txtLibelle = new JTextField();
+		txtLibelle.setBounds(500, 360, 160, 25);
+		ajoutNiveau.getContentPane().add(txtLibelle);
+		txtLibelle.setColumns(10);
+
+		final ComboService cbxService = new ComboService();
+		cbxService.setBounds(500, 310, 160, 25);
+		ajoutNiveau.getContentPane().add(cbxService);
+		
 		Bouton boutonAjouter = new Bouton("Ajouter", 630, 0, 128);
 		boutonAjouter.addMouseListener(new MouseAdapter() {
 			@Override
@@ -52,33 +63,23 @@ public class AjoutNiveau{
 						int retVal = Bdd.executeUpdate(SQLAjout);
 						labelInformation.setText("Le niveau a bien été ajouté.");
 					}
-
 				}catch (Exception e1) {
 					System.out.println(e1.getMessage());
 				}
-
 				Bdd.closeConnexion();
 			}
-
-
 		});
 		boutonAjouter.setBounds(630, 640, 115, 40);
 		ajoutNiveau.getContentPane().add(boutonAjouter);
 
-		JButton btnAnnuler = new JButton("Annuler");
-		btnAnnuler.setForeground(Color.WHITE);
-		btnAnnuler.setBackground(new Color(128, 0, 0));
-		btnAnnuler.setBounds(350, 640, 115, 40);
-		ajoutNiveau.getContentPane().add(btnAnnuler);
-
-		txtLibelle = new JTextField();
-		txtLibelle.setBounds(500, 310, 160, 25);
-		ajoutNiveau.getContentPane().add(txtLibelle);
-		txtLibelle.setColumns(10);
-
-		final ComboService cbxService = new ComboService();
-		cbxService.setBounds(500, 360, 160, 25);
-		ajoutNiveau.getContentPane().add(cbxService);
+		Bouton boutonAnnuler = new Bouton("Annuler", 350, 128, 0);
+		boutonAnnuler.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ajoutNiveau.dispose();
+			}
+		});
+		ajoutNiveau.getContentPane().add(boutonAnnuler);
 
 
 		ajoutNiveau.setVisible(true);
