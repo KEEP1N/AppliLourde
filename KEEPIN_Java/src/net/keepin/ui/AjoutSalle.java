@@ -47,11 +47,21 @@ public class AjoutSalle{
 		textFieldLibelle.setColumns(10);
 		
 		final ComboEtage comboBoxEtage = new ComboEtage();
+		comboBoxEtage.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Eta_champText.setText(comboBoxEtage.getSelectedItem().toString()); 
+			}
+		});
 		
 		comboBoxEtage.setBounds(500, 400, 160, 25);
 		ajoutSalle.getContentPane().add(comboBoxEtage);
 		
 		final ComboBatiment comboBoxBatiment = new ComboBatiment();
+		comboBoxBatiment.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Bati_champText.setText(comboBoxBatiment.getSelectedItem().toString());
+			}
+		});
 		
 		comboBoxBatiment.setBounds(500, 350, 160, 25);
 		ajoutSalle.getContentPane().add(comboBoxBatiment);
@@ -62,7 +72,7 @@ public class AjoutSalle{
 		ajoutSalle.getContentPane().add(Eta_champText);
 		Eta_champText.setColumns(10);
 		
-		Eta_champText.setText(comboBoxEtage.getSelectedItem().toString()); 
+		
 		
 		Bati_champText = new JTextField();
 		Bati_champText.setEditable(false);
@@ -96,7 +106,7 @@ public class AjoutSalle{
 						Programme.showInformation("Cette porte existe déjà, veuillez rentrez un autre libellé.");
 					}else{
 						// On rajoute à la base de données
-						String SQLAjout = "INSERT INTO porte (port_libelle, port_serv_ID) VALUES ('" + IDcombobat +"'," + IDcomboeta +"',"+libelle+ ")";
+						String SQLAjout = "INSERT INTO porte (port_libelle,port_eta_ID,port_bat_ID) VALUES (" + IDcombobat + IDcomboeta + libelle+"," + IDcomboeta +","+libelle+ ")";
 						System.out.println(SQLAjout);
 						int retVal = Bdd.executeUpdate(SQLAjout);
 						Programme.showInformation("La porte a bien été ajouté.");

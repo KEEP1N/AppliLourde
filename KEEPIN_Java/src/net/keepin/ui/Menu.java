@@ -209,14 +209,7 @@ public class Menu extends JMenuBar{
 		});
 		mnSalleNiveau.add(mntmAjouterUneSalleNiveau);
 		
-		JMenuItem mntmModifierUneSalleNiveau = new JMenuItem("Modifier une salle d'un niveau");
 		
-		mntmModifierUneSalleNiveau.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				new ModifSalleNiveau();
-			}
-		});
-		mnSalleNiveau.add(mntmModifierUneSalleNiveau);
 		
 		JMenuItem mntmSupprimerUneSalleNiveau = new JMenuItem("Supprimer une salle d'un niveau");
 		mntmSupprimerUneSalleNiveau.addActionListener(new ActionListener() {
