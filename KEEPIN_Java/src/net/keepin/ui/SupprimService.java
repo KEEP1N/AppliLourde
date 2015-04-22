@@ -1,8 +1,6 @@
 package net.keepin.ui;
 
 import javax.swing.JOptionPane;
-import javax.swing.JTextPane;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import net.keepin.application.Bdd;
 import net.keepin.application.Programme;
@@ -13,11 +11,6 @@ import java.sql.ResultSet;
 
 
 public class SupprimService  {
-
-	
-
-
-	@SuppressWarnings("rawtypes")
 	public SupprimService() {
 		final Conteneur suppService = new Conteneur("Supprimer un Service");
 		
