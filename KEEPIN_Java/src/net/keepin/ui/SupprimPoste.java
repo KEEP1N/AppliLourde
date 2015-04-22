@@ -3,9 +3,9 @@ import javax.swing.JLabel;
 
 
 
-public class SupprimPoste2 {
+public class SupprimPoste {
 
-	public SupprimPoste2() {
+	public SupprimPoste() {
 		Conteneur supprPoste2 = new Conteneur ("Supprimer un poste");
 
 		JLabel LabelLibelle = new JLabel("Libell\u00E9:");

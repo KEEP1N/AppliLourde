@@ -2,6 +2,7 @@ package net.keepin.application;
 
 import net.keepin.ui.Accueil;
 import net.keepin.ui.Connexion;
+
 import javax.swing.JOptionPane;
 
 
@@ -20,10 +21,11 @@ public class Programme {
 				new Accueil();
 			}else{
 				System.out.println("User non connecté");
+				Bdd.closeConnexion();
 				System.exit(0);
 			}
 
-			Bdd.closeConnexion();
+			//A la fermeture: Bdd.closeConnexion();
 
 		}catch(Exception e)
 		{

@@ -4,9 +4,12 @@ package net.keepin.table;
 public class Poste {
 	private int id;
 	private String libelle;
-	public Poste(int pID, String pLibelle) {
+	private int idServ;
+	
+	public Poste(int pID, String pLibelle, int pIDserv) {
 		this.id = pID;
 		setLibelle(pLibelle);
+		setIdServ(pIDserv);
 	}
 
 	private int getId() {
@@ -21,6 +24,14 @@ public class Poste {
 		this.libelle = libelle;
 	}
 
+	public int getIdServ() {
+		return idServ;
+	}
+
+	public void setIdServ(int idServ) {
+		this.idServ = idServ;
+	}
+	
 	public String toString()
 	{
 		return getLibelle();

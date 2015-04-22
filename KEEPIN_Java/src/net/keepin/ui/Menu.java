@@ -41,7 +41,7 @@ public class Menu extends JMenuBar{
 		JMenuItem mntmModifierUnPoste = new JMenuItem("Modifier un poste");
 		mntmModifierUnPoste.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new ModifPoste1();
+				new ModifPoste();
 			}
 		});
 		mnPoste.add(mntmModifierUnPoste);
@@ -50,7 +50,7 @@ public class Menu extends JMenuBar{
 		
 		 mntmSupprimerUnPoste.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new SupprimPoste1();
+				new SupprimPoste();
 			}
 		});
 		mnPoste.add(mntmSupprimerUnPoste);
