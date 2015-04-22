@@ -12,7 +12,7 @@ public class Poste {
 		setIdServ(pIDserv);
 	}
 
-	private int getId() {
+	public int getId() {
 		return this.id;
 	}
 
