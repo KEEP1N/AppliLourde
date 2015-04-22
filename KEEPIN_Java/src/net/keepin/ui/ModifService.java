@@ -3,11 +3,9 @@ package net.keepin.ui;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.ResultSet;
-
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-
 import net.keepin.application.Bdd;
 import net.keepin.application.Programme;
 import net.keepin.table.Service;
