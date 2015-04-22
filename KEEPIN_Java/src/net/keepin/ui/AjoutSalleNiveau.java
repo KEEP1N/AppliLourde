@@ -8,8 +8,6 @@ import javax.swing.ImageIcon;
 
 public class AjoutSalleNiveau{
 
-
-
 	public AjoutSalleNiveau() {
 		Conteneur ajoutSalleNiveau = new Conteneur ("Ajouter une entreprise");
 		ajoutSalleNiveau.setTitle("Ajouter une Salle à un Niveau");
@@ -33,8 +31,6 @@ public class AjoutSalleNiveau{
 
 		Bouton boutonAjouter = new Bouton("Ajouter", 630, 0, 128);
 
-
-
 		boutonAjouter.setBounds(630, 640, 115, 40);
 		ajoutSalleNiveau.getContentPane().add(boutonAjouter);
 
@@ -47,7 +43,6 @@ public class AjoutSalleNiveau{
 		final ComboNiveau cbxNiveau = new ComboNiveau();
 		cbxNiveau.setBounds(500, 310, 160, 25);
 		ajoutSalleNiveau.getContentPane().add(cbxNiveau);
-
 
 		final ComboService cbxService = new ComboService();
 		cbxService.setBounds(500, 360, 160, 25);
