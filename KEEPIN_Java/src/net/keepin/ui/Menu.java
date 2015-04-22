@@ -184,7 +184,7 @@ public class Menu extends JMenuBar{
 		JMenuItem mntmModifierUneSalle = new JMenuItem("Modifier une salle");
 		mntmModifierUneSalle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new ModifSalle1();
+				new ModifSalle();
 			}
 		});
 		mnSalle.add(mntmModifierUneSalle);
