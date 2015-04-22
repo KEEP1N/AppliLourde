@@ -3,15 +3,10 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
-
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Color;
 import java.sql.ResultSet;
-
-import javax.swing.JComboBox;
-import javax.swing.ImageIcon;
-
 import net.keepin.application.Bdd;
 
 
@@ -31,9 +26,6 @@ public class AjoutNiveau{
 		lblService.setBounds(355, 360, 160, 25);
 		ajoutNiveau.getContentPane().add(lblService);
 
-		JLabel lblSalle = new JLabel("Salle : ");
-		lblSalle.setBounds(355, 410, 160, 25);
-		ajoutNiveau.getContentPane().add(lblSalle);
 
 		final JLabel labelInformation = new JLabel("");
 		labelInformation.setHorizontalAlignment(SwingConstants.CENTER);
@@ -88,32 +80,6 @@ public class AjoutNiveau{
 		cbxService.setBounds(500, 360, 160, 25);
 		ajoutNiveau.getContentPane().add(cbxService);
 
-		JComboBox cbxBatiment = new JComboBox();
-		cbxBatiment.setToolTipText("");
-		cbxBatiment.setBounds(500, 410, 100, 25);
-		ajoutNiveau.getContentPane().add(cbxBatiment);
-
-		JComboBox cbxEtage = new JComboBox();
-		cbxEtage.setToolTipText("");
-		cbxEtage.setBounds(625, 410, 75, 25);
-		ajoutNiveau.getContentPane().add(cbxEtage);
-
-		JComboBox cbxSalle = new JComboBox();
-		cbxSalle.setToolTipText("");
-		cbxSalle.setBounds(725, 410, 100, 25);
-		ajoutNiveau.getContentPane().add(cbxSalle);
-
-
-
-		JButton btnTick = new JButton("");
-		btnTick.setIcon(new ImageIcon("C:\\wamp\\www\\KeepIn\\Web\\SiteKEEPIN\\image\\check.png"));
-		btnTick.setBounds(850, 410, 25, 25);
-		ajoutNiveau.getContentPane().add(btnTick);
-
-		JButton btnMark = new JButton("");
-		btnMark.setIcon(new ImageIcon("C:\\wamp\\www\\KeepIn\\Web\\SiteKEEPIN\\image\\mark.png"));
-		btnMark.setBounds(900, 410, 25, 25);
-		ajoutNiveau.getContentPane().add(btnMark);
 
 		ajoutNiveau.setVisible(true);
 	}

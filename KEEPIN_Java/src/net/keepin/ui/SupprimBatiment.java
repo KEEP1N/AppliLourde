@@ -5,6 +5,7 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
 import net.keepin.application.Bdd;
+import net.keepin.application.Programme;
 import net.keepin.table.Batiment;
 
 import java.awt.event.MouseAdapter;
@@ -28,12 +29,13 @@ public class SupprimBatiment{
 		lblBatiment.setBounds(350, 415, 160, 25);
 		supprBatiment.getContentPane().add(lblBatiment);
 
-		final JLabel labelInformation = new JLabel("");
-		labelInformation.setHorizontalAlignment(SwingConstants.CENTER);
-		labelInformation.setBounds(166, 503, 736, 50);
-		supprBatiment.getContentPane().add(labelInformation);
-
 		Bouton boutonAnnuler = new Bouton("Annuler", 350, 128, 0);
+		boutonAnnuler.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				supprBatiment.dispose();
+			}
+		});
 		supprBatiment.getContentPane().add(boutonAnnuler);
 
 		Bouton boutonSupprimer = new Bouton("Supprimer", 630, 0, 128);
@@ -52,13 +54,15 @@ public class SupprimBatiment{
 					ResultSet SQLResultVerif = Bdd.executeQuery(SQLQueryVerif);
 					try{
 						SQLResultVerif.next();
-						if(SQLResultVerif.getInt("total")!=0){
-							labelInformation.setText("Ce bâtiment ne peut être supprimé car il est rattaché à plusieurs salles. Modifier les salles avant de supprimer ce bâtiment.");
+						int resultat = SQLResultVerif.getInt("total");
+						if(resultat!=0){
+							Programme.showWarning("Ce bâtiment ne peut être supprimé car il est rattaché à " + resultat +" salle(s). Modifier la ou les salle(s) avant de supprimer ce bâtiment.");
 						}else{
 							// On supprime de la base de données
 							String SQLSuppr = "DELETE FROM batiment WHERE bat_ID =" + IDCombo;
 							int retVal = Bdd.executeUpdate(SQLSuppr);
-							labelInformation.setText("Le bâtiment a bien été supprimé.");
+							Programme.showInformation("Le bâtiment a bien été supprimé.");
+							supprBatiment.dispose();
 						}
 
 					}catch (Exception e1) {

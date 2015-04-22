@@ -5,6 +5,7 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
 import net.keepin.application.Bdd;
+import net.keepin.application.Programme;
 import net.keepin.table.Etage;
 
 import java.awt.event.MouseAdapter;
@@ -24,11 +25,6 @@ public class SupprimEtage{
 		lblEtage.setLabelFor(comboBoxEtage);
 		lblEtage.setBounds(350, 415, 160, 25);
 		supprEtage.getContentPane().add(lblEtage);
-		
-		final JLabel labelInformation = new JLabel("");
-		labelInformation.setHorizontalAlignment(SwingConstants.CENTER);
-		labelInformation.setBounds(166, 503, 736, 50);
-		supprEtage.getContentPane().add(labelInformation);
 
 		Bouton boutonAnnuler = new Bouton("Annuler", 350, 128, 0);
 		supprEtage.getContentPane().add(boutonAnnuler);
@@ -49,13 +45,14 @@ public class SupprimEtage{
 					ResultSet SQLResultVerif = Bdd.executeQuery(SQLQueryVerif);
 					try{
 						SQLResultVerif.next();
-						if(SQLResultVerif.getInt("total")!=0){
-							labelInformation.setText("Cet étage ne peut être supprimé car il est rattaché à plusieurs salles. Modifier les salles avant de supprimer cet étage.");
+						int resultat = SQLResultVerif.getInt("total");
+						if(resultat!=0){
+							Programme.showWarning("Cet étage ne peut être supprimé car il est rattaché à " + resultat + " salle(s). Modifier la ou les salle(s) avant de supprimer cet étage.");
 						}else{
 							// On supprime de la base de données
 							String SQLSuppr = "DELETE FROM etage WHERE eta_ID =" + IDCombo;
 							int retVal = Bdd.executeUpdate(SQLSuppr);
-							labelInformation.setText("L'étage a bien été supprimé.");
+							Programme.showInformation("L'étage a bien été supprimé.");
 						}
 
 					}catch (Exception e1) {
@@ -67,7 +64,6 @@ public class SupprimEtage{
 			}
 		});
 		supprEtage.getContentPane().add(boutonSupprimer);
-
 		supprEtage.setVisible(true);
 
 	}

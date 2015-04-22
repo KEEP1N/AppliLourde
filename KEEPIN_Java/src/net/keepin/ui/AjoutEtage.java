@@ -26,33 +26,38 @@ public class AjoutEtage{
 		labelLibelle.setLabelFor(textFieldLibelle);
 		labelLibelle.setBounds(350, 350, 56, 25);
 		ajoutEtage.getContentPane().add(labelLibelle);
-		
+
 		Bouton boutonAjouter = new Bouton("Ajouter", 630, 0, 128);
 		boutonAjouter.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				String libelle = textFieldLibelle.getText().trim();
 				Bdd.openConnexion();
-				// Vérifier si l'étage n'existe pas déjà:
-				String SQLQueryVerif = "SELECT COUNT(*) AS total FROM etage WHERE Upper(eta_libelle) = '" + libelle.toUpperCase() +"'";
-				ResultSet SQLResultVerif = Bdd.executeQuery(SQLQueryVerif);
-				try{
-					SQLResultVerif.next();
-					if(SQLResultVerif.getInt("total")!=0){
-						Programme.showWarning("Cet étage existe déjà, veuillez rentrez un autre libellé.");
-					}else{
-						// On rajoute à la base de données
-						String SQLAjout = "INSERT INTO etage (eta_libelle) VALUES ('" + libelle +"')";
-						int retVal = Bdd.executeUpdate(SQLAjout);
-						Programme.showInformation("L'étage a bien été ajouté.");
-						ajoutEtage.dispose();
+				if (libelle.equals("")){
+					Programme.showWarning("Le champ libellé est obligatoire!");
+				}else{
+					// Vérifier si l'étage n'existe pas déjà:
+					String SQLQueryVerif = "SELECT COUNT(*) AS total FROM etage WHERE Upper(eta_libelle) = '" + libelle.toUpperCase() +"'";
+					ResultSet SQLResultVerif = Bdd.executeQuery(SQLQueryVerif);
+					try{
+						SQLResultVerif.next();
+						if(SQLResultVerif.getInt("total")!=0){
+							Programme.showWarning("Cet étage existe déjà, veuillez rentrez un autre libellé.");
+						}else{
+							// On rajoute à la base de données
+							String SQLAjout = "INSERT INTO etage (eta_libelle) VALUES ('" + libelle +"')";
+							int retVal = Bdd.executeUpdate(SQLAjout);
+							Programme.showInformation("L'étage a bien été ajouté.");
+							ajoutEtage.dispose();
+						}
+
+					}catch (Exception e1) {
+						System.out.println(e1.getMessage());
 					}
 
-				}catch (Exception e1) {
-					System.out.println(e1.getMessage());
-				}
+					Bdd.closeConnexion();
 
-				Bdd.closeConnexion();
+				}
 			}
 		});
 		ajoutEtage.getContentPane().add(boutonAjouter);

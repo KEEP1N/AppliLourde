@@ -197,6 +197,35 @@ public class Menu extends JMenuBar{
 		});
 		mnSalle.add(mntmSupprimerUnSalle);
 		
+		JMenu mnSalleNiveau = new JMenu("Associer une Salle à un Niveau");
+		this.add(mnSalleNiveau);
+		
+		JMenuItem mntmAjouterUneSalleNiveau = new JMenuItem("Ajouter une salle à un niveau");
+		
+		mntmAjouterUneSalleNiveau.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new AjoutSalleNiveau();
+			}
+		});
+		mnSalleNiveau.add(mntmAjouterUneSalleNiveau);
+		
+		JMenuItem mntmModifierUneSalleNiveau = new JMenuItem("Modifier une salle d'un niveau");
+		
+		mntmModifierUneSalleNiveau.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new ModifSalleNiveau();
+			}
+		});
+		mnSalleNiveau.add(mntmModifierUneSalleNiveau);
+		
+		JMenuItem mntmSupprimerUneSalleNiveau = new JMenuItem("Supprimer une salle d'un niveau");
+		mntmSupprimerUneSalleNiveau.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new SupprimSalleNiveau();
+			}
+		});
+		mnSalleNiveau.add(mntmSupprimerUneSalleNiveau);
+		
 		JMenu sedeconnect = new JMenu("");
 		sedeconnect .setIcon(new ImageIcon("C:\\wamp\\www\\KEEPIN\\Web\\SiteKEEPIN\\image\\power.png"));
 		this.add(sedeconnect);
