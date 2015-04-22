@@ -2,7 +2,11 @@ package net.keepin.ui;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
+
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import javax.swing.ImageIcon;
 
 
@@ -34,11 +38,14 @@ public class AjoutSalleNiveau{
 		boutonAjouter.setBounds(630, 640, 115, 40);
 		ajoutSalleNiveau.getContentPane().add(boutonAjouter);
 
-		JButton btnAnnuler = new JButton("Annuler");
-		btnAnnuler.setForeground(Color.WHITE);
-		btnAnnuler.setBackground(new Color(128, 0, 0));
-		btnAnnuler.setBounds(350, 640, 115, 40);
-		ajoutSalleNiveau.getContentPane().add(btnAnnuler);
+		Bouton boutonAnnuler = new Bouton("Annuler", 350, 128, 0);
+		boutonAnnuler.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ajoutSalleNiveau.dispose();
+			}
+		});
+		ajoutSalleNiveau.getContentPane().add(boutonAnnuler);
 
 		final ComboNiveau cbxNiveau = new ComboNiveau();
 		cbxNiveau.setBounds(500, 310, 160, 25);
@@ -62,8 +69,6 @@ public class AjoutSalleNiveau{
 		cbxSalle.setToolTipText("");
 		cbxSalle.setBounds(725, 410, 100, 25);
 		ajoutSalleNiveau.getContentPane().add(cbxSalle);
-
-
 
 		JButton btnTick = new JButton("");
 		btnTick.setIcon(new ImageIcon("C:\\wamp\\www\\KeepIn\\Web\\SiteKEEPIN\\image\\check.png"));
