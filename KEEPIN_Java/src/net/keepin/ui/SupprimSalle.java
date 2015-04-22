@@ -19,13 +19,18 @@ public class SupprimSalle{
 		lblSalle.setBounds(350, 450, 160, 25);
 		supprSalle.getContentPane().add(lblSalle);
 
-		JComboBox comboBoxEtage = new JComboBox();
+		final ComboEtage comboBoxEtage = new ComboEtage();
 		comboBoxEtage.setBounds(500, 400, 160, 25);
 		supprSalle.getContentPane().add(comboBoxEtage);
 
-		JComboBox comboBoxBatiment = new JComboBox();
+		final ComboBatiment comboBoxBatiment = new ComboBatiment();
 		comboBoxBatiment.setBounds(500, 350, 160, 25);
 		supprSalle.getContentPane().add(comboBoxBatiment);
+		
+		final ComboSalle comboSalle = new ComboSalle();
+		comboSalle.setBounds(500, 450, 160, 25);
+		supprSalle.getContentPane().add(comboSalle);
+
 
 		Bouton boutonAnnuler = new Bouton ("Annuler", 350, 128, 0);
 		supprSalle.getContentPane().add(boutonAnnuler);
@@ -34,9 +39,6 @@ public class SupprimSalle{
 		boutonSuppr.setText("Supprimer");
 		supprSalle.getContentPane().add(boutonSuppr);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(500, 450, 160, 25);
-		supprSalle.getContentPane().add(comboBox);
 
 
 

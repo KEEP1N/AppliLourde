@@ -20,6 +20,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 public class AjoutSalle{
 	private JTextField textFieldLibelle;
@@ -57,8 +59,8 @@ public class AjoutSalle{
 		ajoutSalle.getContentPane().add(comboBoxEtage);
 		
 		final ComboBatiment comboBoxBatiment = new ComboBatiment();
-		comboBoxBatiment.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+		comboBoxBatiment.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent arg0) {
 				Bati_champText.setText(comboBoxBatiment.getSelectedItem().toString());
 			}
 		});
@@ -71,6 +73,7 @@ public class AjoutSalle{
 		Eta_champText.setBounds(669, 450, 86, 25);
 		ajoutSalle.getContentPane().add(Eta_champText);
 		Eta_champText.setColumns(10);
+		Eta_champText.setText("");
 		
 		
 		
@@ -79,7 +82,7 @@ public class AjoutSalle{
 		Bati_champText.setBounds(500, 450, 144, 25);
 		ajoutSalle.getContentPane().add(Bati_champText);
 		Bati_champText.setColumns(10);
-
+		Bati_champText.setText("");
 		
 		
 		Bouton boutonAnnuler = new Bouton ("Annuler", 350, 128, 0);
@@ -90,15 +93,25 @@ public class AjoutSalle{
 			
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				int IDcombobat = ((Batiment)comboBoxBatiment.getSelectedItem()).getId();
-				int IDcomboeta = ((Etage)comboBoxEtage.getSelectedItem()).getId();
+				String IDcombobat = ((Batiment)comboBoxBatiment.getSelectedItem()).getLibelle();
+				int IDcombobat2 = ((Batiment)comboBoxBatiment.getSelectedItem()).getId();
+				String IDcomboeta = ((Etage)comboBoxEtage.getSelectedItem()).getLibelle();
+				int IDcomboeta2 = ((Etage)comboBoxEtage.getSelectedItem()).getId();
 				String libelle = textFieldLibelle.getText().trim();
+				String nom_total = IDcombobat+IDcomboeta+libelle;
 				
 				
 				
 				
 				Bdd.openConnexion();
-				String SQLQueryVerif = "SELECT COUNT(*) AS total FROM porte WHERE Upper(port_libelle) = '" + libelle.toUpperCase() +"'";
+				if (libelle.equals("")){
+					Programme.showWarning("Le champ libellé est obligatoire!");
+				}if(Bati_champText.equals("")){
+					Programme.showWarning("Le champ libellé est obligatoire!");
+				}if (Eta_champText.equals("")){
+					Programme.showWarning("Le champ libellé est obligatoire!");
+				}else{
+				String SQLQueryVerif = "SELECT COUNT(*) AS total FROM porte WHERE Upper(port_libelle) = '" + nom_total.toUpperCase() +"'";
 				ResultSet SQLResultVerif = Bdd.executeQuery(SQLQueryVerif);
 				try{
 					SQLResultVerif.next();
@@ -106,7 +119,7 @@ public class AjoutSalle{
 						Programme.showInformation("Cette porte existe déjà, veuillez rentrez un autre libellé.");
 					}else{
 						// On rajoute à la base de données
-						String SQLAjout = "INSERT INTO porte (port_libelle,port_eta_ID,port_bat_ID) VALUES (" + IDcombobat + IDcomboeta + libelle+"," + IDcomboeta +","+libelle+ ")";
+						String SQLAjout = "INSERT INTO porte (port_libelle,port_eta_ID,port_bat_ID) VALUES ('" +nom_total+"'," + IDcomboeta2 +","+IDcombobat2+")";
 						System.out.println(SQLAjout);
 						int retVal = Bdd.executeUpdate(SQLAjout);
 						Programme.showInformation("La porte a bien été ajouté.");
@@ -118,8 +131,8 @@ public class AjoutSalle{
 				
 				Bdd.closeConnexion();
 			}
+			}
 		});
-		
 		ajoutSalle.getContentPane().add(boutonAjouter);
 		
 		Eta_champText = new JTextField();
