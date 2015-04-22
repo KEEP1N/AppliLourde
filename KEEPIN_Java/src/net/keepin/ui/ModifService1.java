@@ -46,7 +46,7 @@ public class ModifService1 extends JFrame {
 		ResultSet resultListServ = Bdd.executeQuery(selectService);
 		while(resultListServ.next()){
 			
-			comboBoxService.addItem(resultListServ.getString("serv_libelle"));
+			comboBoxService.addItem(resultListServ.getString("serv_libelle")); 
 			
 		}
 		

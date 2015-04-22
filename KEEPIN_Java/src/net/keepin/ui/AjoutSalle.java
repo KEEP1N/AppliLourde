@@ -4,6 +4,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import net.keepin.application.Bdd;
+import net.keepin.application.Programme;
 import net.keepin.table.Batiment;
 import net.keepin.table.Etage;
 import net.keepin.table.Service;
@@ -15,6 +16,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
 
 public class AjoutSalle{
 	private JTextField textFieldLibelle;
@@ -51,6 +56,21 @@ public class AjoutSalle{
 		comboBoxBatiment.setBounds(500, 350, 160, 25);
 		ajoutSalle.getContentPane().add(comboBoxBatiment);
 		
+		Eta_champText = new JTextField();
+		Eta_champText.setEditable(false);
+		Eta_champText.setBounds(669, 450, 86, 25);
+		ajoutSalle.getContentPane().add(Eta_champText);
+		Eta_champText.setColumns(10);
+		
+		Eta_champText.setText(comboBoxEtage.getSelectedItem().toString()); 
+		
+		Bati_champText = new JTextField();
+		Bati_champText.setEditable(false);
+		Bati_champText.setBounds(500, 450, 144, 25);
+		ajoutSalle.getContentPane().add(Bati_champText);
+		Bati_champText.setColumns(10);
+
+		
 		
 		Bouton boutonAnnuler = new Bouton ("Annuler", 350, 128, 0);
 		ajoutSalle.getContentPane().add(boutonAnnuler);
@@ -64,18 +84,22 @@ public class AjoutSalle{
 				int IDcomboeta = ((Etage)comboBoxEtage.getSelectedItem()).getId();
 				String libelle = textFieldLibelle.getText().trim();
 				
+				
+				
+				
 				Bdd.openConnexion();
 				String SQLQueryVerif = "SELECT COUNT(*) AS total FROM porte WHERE Upper(port_libelle) = '" + libelle.toUpperCase() +"'";
 				ResultSet SQLResultVerif = Bdd.executeQuery(SQLQueryVerif);
 				try{
 					SQLResultVerif.next();
 					if(SQLResultVerif.getInt("total")!=0){
-						labelInformation.setText("Cette porte existe déjà, veuillez rentrez un autre libellé.");
+						Programme.showInformation("Cette porte existe déjà, veuillez rentrez un autre libellé.");
 					}else{
 						// On rajoute à la base de données
-						String SQLAjout = "INSERT INTO poste (post_libelle, post_serv_ID) VALUES ('" + libelle +"'," + IDcombobat +"',"+IDcomboeta+ ")";
+						String SQLAjout = "INSERT INTO porte (port_libelle, port_serv_ID) VALUES ('" + IDcombobat +"'," + IDcomboeta +"',"+libelle+ ")";
+						System.out.println(SQLAjout);
 						int retVal = Bdd.executeUpdate(SQLAjout);
-						labelInformation.setText("La porte a bien été ajouté.");
+						Programme.showInformation("La porte a bien été ajouté.");
 					}
 					
 				}catch (Exception e1) {
@@ -99,10 +123,6 @@ public class AjoutSalle{
 		Bati_champText.setBounds(500, 450, 144, 25);
 		ajoutSalle.getContentPane().add(Bati_champText);
 		Bati_champText.setColumns(10);
-		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(471, 551, 46, 14);
-		ajoutSalle.getContentPane().add(lblNewLabel);
 		
 		
 
