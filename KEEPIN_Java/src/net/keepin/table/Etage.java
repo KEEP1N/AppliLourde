@@ -3,29 +3,34 @@ package net.keepin.table;
 public class Etage {
 	int id;
 	private String libelle;
-	
-	 public Etage(int pID, String pLibelle) {
-		  this.id = pID;
-		  setLibelle(pLibelle);
-		  
-		  }
-	 public int getId() {
-		  return this.id;
-		 }
-
-	 public String getLibelle() {
-		  return libelle;
-		 }
-
-	 public void setLibelle(String libelle) {
-		  this.libelle = libelle;
-		 }
-
-	 public String toString()
-		 {
-		  return getLibelle();
-		 }
 
 
+	public Etage(int pID, String pLibelle) {
+		this.id = pID;
+		setLibelle(pLibelle);
 		
+
+	}
+
+
+	public int getId() {
+		return this.id;
+	}
+
+	public String getLibelle() {
+		return libelle;
+	}
+
+	public void setLibelle(String libelle) {
+		this.libelle = libelle;
+	}
+
+	public String toString()
+	{
+		return getLibelle();
+	}
+
+
+
+
 }
