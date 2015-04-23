@@ -51,13 +51,12 @@ public class ModifEtage{
 		boutonModifier.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				int IDCombo = ((Etage) comboBoxEtage.getSelectedItem()).getId();;
+				int IDCombo = ((Etage) comboBoxEtage.getSelectedItem()).getId();
 				String libelle = textFieldLibelle.getText().trim();
 
 				if (libelle.equals("")){
 					Programme.showWarning("Le champ libellé est obligatoire!");
 				}else{
-					Bdd.openConnexion();
 					String SQLQueryVerif = "SELECT COUNT(*) AS total FROM etage WHERE Upper(eta_libelle) = '" + libelle.toUpperCase() +"'";
 					ResultSet SQLResultVerif = Bdd.executeQuery(SQLQueryVerif);
 					try{
@@ -75,8 +74,6 @@ public class ModifEtage{
 					}catch (Exception e1) {
 						System.out.println(e1.getMessage());
 					}
-
-					Bdd.closeConnexion();
 				}
 			}
 		});
