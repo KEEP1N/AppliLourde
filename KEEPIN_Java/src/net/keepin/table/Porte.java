@@ -6,10 +6,20 @@ public class Porte {
 	private int IDbat;
 	private int IDeta;
 
-	public Porte(int pID, String pLibelle,int pIDeta) {
+	public Porte(int pID, String pLibelle,int pIDeta, int pIDbat) {
 		this.id = pID;
 		setLibelle(pLibelle);
 		setLibelle(pIDeta);
+		setLibelle(pIDbat);
+	}
+
+	
+
+
+	
+	public Porte(int pID, String pLibelle) {
+		this.id = pID;
+		setLibelle(pLibelle);
 	}
 
 
@@ -20,10 +30,6 @@ public class Porte {
 		return IDeta;
 		
 	}
-
-
-
-
 
 	private int setIDbat(int pIDbat) {
 		return IDbat;

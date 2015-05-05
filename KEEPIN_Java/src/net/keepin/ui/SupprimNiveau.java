@@ -9,29 +9,22 @@ import javax.swing.JOptionPane;
 
 import net.keepin.application.Bdd;
 import net.keepin.application.Programme;
-import net.keepin.table.Etage;
+import net.keepin.table.Niveau;
+import javax.swing.JComboBox;
 
 public class SupprimNiveau{
 	
 	public SupprimNiveau() {
-		Conteneur supprNiveau = new Conteneur ("Supprimer Niveau");
+		final Conteneur supprNiveau = new Conteneur ("Supprimer Niveau");
 		supprNiveau.setTitle("Supprimer Niveau");
 		
 		JLabel lblNiveau = new JLabel("Niveau :");
-		lblNiveau.setBounds(350, 360, 160, 25);
+		lblNiveau.setBounds(352, 348, 160, 25);
 		supprNiveau.getContentPane().add(lblNiveau);
-
-		JLabel lblService = new JLabel("Service : ");
-		lblService.setBounds(350, 310, 160, 25);
-		supprNiveau.getContentPane().add(lblService);
 		
-		final ComboNiveau cbxNiveau = new ComboNiveau();
-		cbxNiveau.setBounds(500, 360, 160, 25);
-		supprNiveau.getContentPane().add(cbxNiveau);
-		
-		final ComboService cbxService = new ComboService();
-		cbxService.setBounds(500, 310, 160, 25);
-		supprNiveau.getContentPane().add(cbxService);
+		final ComboNiveau comboBoxNiveau = new ComboNiveau();
+		comboBoxNiveau.setBounds(479, 349, 154, 23);
+		supprNiveau.getContentPane().add(comboBoxNiveau);
 
 		Bouton boutonAnnuler = new Bouton("Annuler", 350, 128, 0);
 		boutonAnnuler.addMouseListener(new MouseAdapter() {
@@ -50,7 +43,7 @@ public class SupprimNiveau{
 				int retour = confirmation.showConfirmDialog(supprNiveau, "Êtes-vous certain de vouloir supprimer ce niveau ?", "Attention!", JOptionPane.YES_NO_OPTION);
 
 				if (retour == 0){
-					int IDCombo = ((Etage) cbxNiveau.getSelectedItem()).getId();;
+					int IDCombo = ((Niveau) comboBoxNiveau.getSelectedItem()).getId();;
 
 					Bdd.openConnexion();
 					//On vérifie que ce que l'utilisateur veut supprimer n'est rattaché à aucun autre élément dans la base
@@ -77,6 +70,8 @@ public class SupprimNiveau{
 			}
 		});
 		supprNiveau.getContentPane().add(boutonSupprimer);
+		
+
 		
 		
 

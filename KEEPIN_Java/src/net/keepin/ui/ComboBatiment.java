@@ -13,7 +13,6 @@ public class ComboBatiment extends JComboBox<Batiment>{
 
 	public ComboBatiment()
 	{
-		Bdd.openConnexion();
 		int ID;
 		String libelle;
 		try
@@ -30,6 +29,5 @@ public class ComboBatiment extends JComboBox<Batiment>{
 		{
 			e.printStackTrace();
 		}
-		Bdd.closeConnexion();
 	}
 }

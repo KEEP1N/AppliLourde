@@ -17,7 +17,6 @@ public class ComboNiveau extends JComboBox<Niveau>{
 
 	public ComboNiveau()
 	{
-		Bdd.openConnexion();
 		int ID;
 		String libelle;
 		try
@@ -34,7 +33,6 @@ public class ComboNiveau extends JComboBox<Niveau>{
 		{
 			e.printStackTrace();
 		}
-		Bdd.closeConnexion();
 	}
 
 }

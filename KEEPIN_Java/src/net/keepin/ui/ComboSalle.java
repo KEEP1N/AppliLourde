@@ -15,7 +15,6 @@ public class ComboSalle extends JComboBox<Porte>{
 
 	public ComboSalle()
 	{
-		Bdd.openConnexion();
 		int ID;
 		String libelle;
 		try
@@ -32,6 +31,6 @@ public class ComboSalle extends JComboBox<Porte>{
 		{
 			e.printStackTrace();
 		}
-		Bdd.closeConnexion();
+
 	}
 }

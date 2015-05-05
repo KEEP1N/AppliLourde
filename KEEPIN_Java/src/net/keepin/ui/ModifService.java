@@ -75,7 +75,7 @@ public class ModifService{
 						System.out.println(e1.getMessage());
 					}
 
-					Bdd.closeConnexion();
+					
 				}
 			}
 		});

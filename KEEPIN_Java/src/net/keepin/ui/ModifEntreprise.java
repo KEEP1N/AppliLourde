@@ -18,7 +18,7 @@ public class ModifEntreprise{
 	private JTextField textFieldRS;
 
 	public ModifEntreprise() {
-		Bdd.openConnexion();
+		
 		final Conteneur modifEntreprise = new Conteneur ("Modifier Entreprise");
 
 		JLabel lblEntreprise = new JLabel("Entreprise:");
@@ -118,7 +118,6 @@ public class ModifEntreprise{
 						System.out.println(e1.getMessage());
 					}
 
-					Bdd.closeConnexion();
 				}
 			}
 		});
