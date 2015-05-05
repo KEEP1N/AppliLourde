@@ -96,6 +96,9 @@ public class ModifPoste{
 				int IDCombo = ((Poste) comboBoxPoste.getSelectedItem()).getId();
 				String libelle = textFieldLibelle.getText().trim().replaceAll("\'", "\\\\'");
 
+				if (IDCombo == 0){
+					Programme.showWarning("Veuillez sélectionner obligatoirement un poste!");
+				}
 				if (libelle.equals("")){
 					Programme.showWarning("Le champ libellé est obligatoire!");
 				}else{
