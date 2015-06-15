@@ -14,7 +14,7 @@ import net.keepin.table.Etage;
 public class SupprimSalleNiveau{
 
 	public SupprimSalleNiveau() {
-		Conteneur supprSalleNiveau = new Conteneur ("Modifier une salle associée à un niveau");
+		final Conteneur supprSalleNiveau = new Conteneur ("Modifier une salle associée à un niveau");
 		supprSalleNiveau.setTitle("Modifier une salle associée à un niveau");
 		JLabel lblNiveau = new JLabel("Selectionner Niveau :");
 		lblNiveau.setBounds(350, 360, 160, 25);

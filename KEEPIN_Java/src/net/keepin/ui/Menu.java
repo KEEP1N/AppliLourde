@@ -1,10 +1,16 @@
 package net.keepin.ui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+
+import net.keepin.application.Bdd;
+
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 public class Menu extends JMenuBar{
@@ -219,8 +225,15 @@ public class Menu extends JMenuBar{
 		});
 		mnSalleNiveau.add(mntmSupprimerUneSalleNiveau);
 		
-		JMenu sedeconnect = new JMenu("");
-		sedeconnect .setIcon(new ImageIcon("C:\\wamp\\www\\KEEPIN\\Web\\SiteKEEPIN\\image\\power.png"));
+		final JMenu sedeconnect = new JMenu("");
+		sedeconnect.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				Bdd.closeConnexion();
+				System.exit(0);
+			}
+		});
+		sedeconnect .setIcon(new ImageIcon("C:\\wamp\\www\\KEEPIN\\Web\\Code\\image\\power.png"));
 		this.add(sedeconnect);
 	}
 

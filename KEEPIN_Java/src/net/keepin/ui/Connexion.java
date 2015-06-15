@@ -42,7 +42,7 @@ public class Connexion extends JDialog {
 		JLabel label_logo = new JLabel("");
 		label_logo.setHorizontalAlignment(SwingConstants.CENTER);
 		label_logo.setBounds(175, 5, 150, 150);
-		label_logo.setIcon(new ImageIcon("C:\\wamp\\www\\KEEPIN\\Web\\SiteKEEPIN\\image\\logo.png"));
+		label_logo.setIcon(new ImageIcon("C:\\wamp\\www\\KEEPIN\\Web\\Code\\image\\logo.png"));
 		panneau.add(label_logo);
 
 		JLabel label_email = new JLabel("E-mail :");
