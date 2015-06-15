@@ -48,7 +48,7 @@ public class SupprimBatiment{
 				if (retour == 0){
 					int IDCombo = ((Batiment) comboBoxBatiment.getSelectedItem()).getId();;
 
-					Bdd.openConnexion();
+					
 					//On vérifie que ce que l'utilisateur veut supprimer n'est rattaché à aucun autre élément dans la base
 					String SQLQueryVerif = "SELECT COUNT(*) AS total FROM porte WHERE port_bat_ID =" + IDCombo;
 					ResultSet SQLResultVerif = Bdd.executeQuery(SQLQueryVerif);
@@ -69,7 +69,7 @@ public class SupprimBatiment{
 						System.out.println(e1.getMessage());
 					}
 
-					Bdd.closeConnexion();
+					
 				}		
 			}
 

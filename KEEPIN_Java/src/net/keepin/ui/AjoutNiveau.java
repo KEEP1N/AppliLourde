@@ -38,7 +38,7 @@ public class AjoutNiveau{
 			public void mouseClicked(MouseEvent arg0) {
 
 				String libelle = textFieldNiveau.getText().trim();
-				Bdd.openConnexion();
+				
 				// Vérifier si le Niveau n'existe pas déjà:
 				String SQLQueryVerif = "SELECT COUNT(*) AS total FROM niveau WHERE Upper(niv_libelle) = '" + libelle.toUpperCase() +"'";
 				ResultSet SQLResultVerif = Bdd.executeQuery(SQLQueryVerif);
@@ -61,7 +61,7 @@ public class AjoutNiveau{
 				catch (Exception e1) {
 					System.out.println(e1.getMessage());
 				}
-				Bdd.closeConnexion();
+				
 			}
 			}
 		});

@@ -100,7 +100,7 @@ public class ModifEntreprise{
 				Matcher m = telOk.matcher(tel);
 				final boolean result = m.matches();
 
-				Bdd.openConnexion();
+				
 				if (nom.equals("")){
 					Programme.showWarning("Le champ Nom est obligatoire!");
 				}else{
@@ -124,7 +124,7 @@ public class ModifEntreprise{
 		modifEntreprise.getContentPane().add(boutonAjouter);
 
 		modifEntreprise.setVisible(true);
-		Bdd.closeConnexion();
+		
 
 	}
 }

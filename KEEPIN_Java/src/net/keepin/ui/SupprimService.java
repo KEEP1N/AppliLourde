@@ -37,7 +37,7 @@ public class SupprimService  {
 				if (retour == 0){
 					int IDCombo = ((Service) comboBoxService.getSelectedItem()).getId();;
 
-					Bdd.openConnexion();
+					
 					//On vérifie que ce que l'utilisateur veut supprimer n'est rattaché à aucun autre élément dans la base
 					String SQLQueryVerif = "SELECT COUNT(*) AS total FROM poste WHERE post_serv_ID =" + IDCombo;
 					ResultSet SQLResultVerif = Bdd.executeQuery(SQLQueryVerif);
@@ -58,7 +58,7 @@ public class SupprimService  {
 						System.out.println(e1.getMessage());
 					}
 
-					Bdd.closeConnexion();
+					
 				}		
 			}
 		});

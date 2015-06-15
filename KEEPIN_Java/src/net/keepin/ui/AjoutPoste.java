@@ -56,7 +56,7 @@ public class AjoutPoste {
 				int IDCombo = ((Service) comboBoxServ.getSelectedItem()).getId();
 				String libelle = textFieldLibelle.getText().trim();
 
-				Bdd.openConnexion();
+				
 				if (libelle.equals("")){
 					Programme.showWarning("Le champ libellé est obligatoire!");
 				}else{
@@ -78,7 +78,7 @@ public class AjoutPoste {
 						System.out.println(e1.getMessage());
 					}
 
-					Bdd.closeConnexion();
+					
 				}
 			}
 		});

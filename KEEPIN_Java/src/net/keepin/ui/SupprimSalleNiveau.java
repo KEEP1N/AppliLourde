@@ -72,7 +72,7 @@ public class SupprimSalleNiveau{
 				if (retour == 0){
 					int IDCombo = ((Etage) cbxSalle.getSelectedItem()).getId();;
 
-					Bdd.openConnexion();
+					
 					//On vérifie que ce que l'utilisateur veut supprimer n'est rattaché à aucun autre élément dans la base
 					String SQLQueryVerif = "SELECT COUNT(*) AS total FROM niveau WHERE port_niv_ID =" + IDCombo;
 					ResultSet SQLResultVerif = Bdd.executeQuery(SQLQueryVerif);
@@ -92,7 +92,7 @@ public class SupprimSalleNiveau{
 						System.out.println(e1.getMessage());
 					}
 
-					Bdd.closeConnexion();
+					
 				}		
 			}
 		});

@@ -52,7 +52,7 @@ public class ModifBatiment{
 				int IDCombo = ((Batiment) comboBoxBatiment.getSelectedItem()).getId();;
 				String libelle = textFieldLibelle.getText().trim();
 
-				Bdd.openConnexion();
+				
 				if (libelle.equals("")){
 					Programme.showWarning("Le champ libellé est obligatoire!");
 				}else{
@@ -74,7 +74,7 @@ public class ModifBatiment{
 						System.out.println(e1.getMessage());
 					}
 
-					Bdd.closeConnexion();
+					
 				}
 			}
 		});

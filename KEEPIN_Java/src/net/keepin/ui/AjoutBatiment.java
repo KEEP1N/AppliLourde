@@ -36,7 +36,7 @@ public class AjoutBatiment{
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				String libelle = textFieldLibelle.getText().trim();
-				Bdd.openConnexion();
+				
 
 				if (libelle.equals("")){
 					Programme.showWarning("Le champ libellé est obligatoire!");
@@ -60,7 +60,11 @@ public class AjoutBatiment{
 						System.out.println(e1.getMessage());
 					}
 
+<<<<<<< HEAD
 					//Bdd.closeConnexion();
+=======
+					
+>>>>>>> origin/master
 				}
 
 			}

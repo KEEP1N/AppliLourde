@@ -103,7 +103,7 @@ public class AjoutSalle{
 				
 				
 				
-				Bdd.openConnexion();
+				
 				if (libelle.equals("")){
 					Programme.showWarning("Le champ libellé est obligatoire!");
 				}if(Bati_champText.equals("")){
@@ -129,7 +129,7 @@ public class AjoutSalle{
 					System.out.println(e1.getMessage());
 				}
 				
-				Bdd.closeConnexion();
+				
 			}
 			}
 		});
