@@ -8,15 +8,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JLabel;
-import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 
 import net.keepin.application.Bdd;
 import net.keepin.application.Programme;
 import net.keepin.table.Niveau;
-import net.keepin.table.Poste;
 import net.keepin.table.Service;
 
 public class ModifNiveau{
@@ -41,9 +38,6 @@ public class ModifNiveau{
 		modifNiveau.getContentPane().add(lblNiveau);
 
 		final JComboBox<Niveau> comboBoxNiveau = new JComboBox<Niveau>();
-
-		
-		
 		comboBoxServ.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {
 				int IDComboServ = ((Service) comboBoxServ.getSelectedItem()).getId();
