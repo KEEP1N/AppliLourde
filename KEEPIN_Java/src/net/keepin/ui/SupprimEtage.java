@@ -39,7 +39,7 @@ public class SupprimEtage{
 				if (retour == 0){
 					int IDCombo = ((Etage) comboBoxEtage.getSelectedItem()).getId();;
 
-					Bdd.openConnexion();
+					
 					//On vérifie que ce que l'utilisateur veut supprimer n'est rattaché à aucun autre élément dans la base
 					String SQLQueryVerif = "SELECT COUNT(*) AS total FROM porte WHERE port_eta_ID =" + IDCombo;
 					ResultSet SQLResultVerif = Bdd.executeQuery(SQLQueryVerif);
@@ -59,7 +59,7 @@ public class SupprimEtage{
 						System.out.println(e1.getMessage());
 					}
 
-					Bdd.closeConnexion();
+					
 				}		
 			}
 		});

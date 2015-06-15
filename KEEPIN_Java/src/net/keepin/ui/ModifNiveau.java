@@ -25,19 +25,6 @@ public class ModifNiveau{
 	public ModifNiveau() {
 		final Conteneur modifNiveau = new Conteneur ("Modifier Entreprise");
 		modifNiveau.setTitle("Modifier Niveau");
-<<<<<<< HEAD
-		
-		ComboService comboBoxService = new ComboService();
-		comboBoxService.setBounds(459, 312, 160, 25);
-		modifNiveau.getContentPane().add(comboBoxService);
-		
-		JLabel LabelPoste = new JLabel("Poste:");
-		LabelPoste.setBounds(350, 312, 160, 25);
-		modifNiveau.getContentPane().add(LabelPoste);
-		
-		JLabel lblNiveau = new JLabel("Niveau :");
-		lblNiveau.setBounds(350, 360, 160, 25);
-=======
 
 		JLabel Labelservice = new JLabel("Service:");
 		Labelservice.setBounds(300, 350, 50, 25);
@@ -51,18 +38,11 @@ public class ModifNiveau{
 
 		JLabel lblNiveau = new JLabel("Niveau :");
 		lblNiveau.setBounds(300, 400, 160, 25);
->>>>>>> deb110490546ad5c14cec206905c2bb5e1ec7b0f
 		modifNiveau.getContentPane().add(lblNiveau);
 
 		final JComboBox<Niveau> comboBoxNiveau = new JComboBox<Niveau>();
 
 		
-<<<<<<< HEAD
-		final ComboNiveau comboBoxNiveau = new ComboNiveau();
-		comboBoxNiveau.setBounds(459, 362, 160, 23);
-		modifNiveau.getContentPane().add(comboBoxNiveau);
-=======
->>>>>>> deb110490546ad5c14cec206905c2bb5e1ec7b0f
 		
 		comboBoxServ.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {
@@ -95,19 +75,11 @@ public class ModifNiveau{
 		modifNiveau.getContentPane().add(comboBoxNiveau);
 
 		JLabel lblLibelle = new JLabel("Libelle :");
-<<<<<<< HEAD
-		lblLibelle.setBounds(350, 414, 46, 14);
-=======
 		lblLibelle.setBounds(300, 450, 50, 25);
->>>>>>> deb110490546ad5c14cec206905c2bb5e1ec7b0f
 		modifNiveau.getContentPane().add(lblLibelle);
 
 		textFieldNiveau = new JTextField();
-<<<<<<< HEAD
-		textFieldNiveau.setBounds(459, 410, 160, 23);
-=======
 		textFieldNiveau.setBounds(400, 450, 160, 25);
->>>>>>> deb110490546ad5c14cec206905c2bb5e1ec7b0f
 		modifNiveau.getContentPane().add(textFieldNiveau);
 		textFieldNiveau.setColumns(10);
 
