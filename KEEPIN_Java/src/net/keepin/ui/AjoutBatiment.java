@@ -60,7 +60,7 @@ public class AjoutBatiment{
 						System.out.println(e1.getMessage());
 					}
 
-					Bdd.closeConnexion();
+					//Bdd.closeConnexion();
 				}
 
 			}
