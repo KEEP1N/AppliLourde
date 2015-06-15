@@ -46,7 +46,7 @@ public class AjoutService {
 				if (libelle.equals("")){
 					Programme.showWarning("Le champ libellé est obligatoire!");
 				}else{
-					Bdd.openConnexion();
+					
 					// Vérifier si le service n'existe pas déjà:
 					String SQLQueryVerif = "SELECT COUNT(*) AS total FROM service WHERE Upper(serv_libelle) = '" + libelle.toUpperCase() +"'";
 					ResultSet SQLResultVerif = Bdd.executeQuery(SQLQueryVerif);
@@ -66,7 +66,7 @@ public class AjoutService {
 						System.out.println(e1.getMessage());
 					}
 
-					Bdd.closeConnexion();
+					
 				}
 			}
 		});

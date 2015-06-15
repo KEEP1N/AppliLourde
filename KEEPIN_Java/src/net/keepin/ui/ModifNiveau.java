@@ -54,7 +54,7 @@ public class ModifNiveau{
 				int IDCombo = ((Niveau) comboBoxNiveau.getSelectedItem()).getId();
 				String libelle = textFieldNiveau.getText().trim();
 
-				Bdd.openConnexion();
+				
 				if (libelle.equals("")){
 					Programme.showWarning("Le champ libellé est obligatoire!");
 				}else{

@@ -32,7 +32,7 @@ public class AjoutEtage{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				String libelle = textFieldLibelle.getText().trim();
-				Bdd.openConnexion();
+				
 				if (libelle.equals("")){
 					Programme.showWarning("Le champ libellé est obligatoire!");
 				}else{
@@ -55,7 +55,7 @@ public class AjoutEtage{
 						System.out.println(e1.getMessage());
 					}
 
-					Bdd.closeConnexion();
+					
 
 				}
 			}

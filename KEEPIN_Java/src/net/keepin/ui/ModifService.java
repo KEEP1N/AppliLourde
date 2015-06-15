@@ -53,7 +53,7 @@ public class ModifService{
 				int IDCombo = ((Service) comboBoxService.getSelectedItem()).getId();
 				String libelle = textFieldLibelle.getText().trim();
 
-				Bdd.openConnexion();
+				
 				if (libelle.equals("")){
 					Programme.showWarning("Le champ libellé est obligatoire!");
 				}else{
