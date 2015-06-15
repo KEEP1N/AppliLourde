@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 
 import net.keepin.application.Bdd;
 import net.keepin.application.Programme;
+import net.keepin.table.Service;
 
 import javax.swing.JComboBox;
 
@@ -23,9 +24,18 @@ public class AjoutNiveau{
 		ajoutNiveau.setTitle("Ajouter un Niveau");
 
 		JLabel lblLibelle = new JLabel("Libelle : ");
-		lblLibelle.setBounds(350, 332, 160, 25);
+		lblLibelle.setBounds(350, 350, 160, 25);
 		ajoutNiveau.getContentPane().add(lblLibelle);
 
+		JLabel Labelservice = new JLabel("Service:");
+		Labelservice.setBounds(350, 400, 56, 25);
+		ajoutNiveau.getContentPane().add(Labelservice);
+
+		final ComboService comboBoxServ = new ComboService();
+
+		Labelservice.setLabelFor(comboBoxServ);
+		comboBoxServ.setBounds(450, 400, 160, 25);
+		ajoutNiveau.getContentPane().add(comboBoxServ);
 
 		final JLabel labelInformation = new JLabel("");
 		labelInformation.setHorizontalAlignment(SwingConstants.CENTER);
@@ -52,9 +62,11 @@ public class AjoutNiveau{
 							Programme.showWarning("Ce niveau existe déjà, veuillez rentrez un autre libellé.");
 						}else{
 							// On rajoute à la base de données
-							String SQLAjout = "INSERT INTO niveau (niv_libelle) VALUES ('" + libelle +"')";
+							int IDCombo = ((Service) comboBoxServ.getSelectedItem()).getId();
+							String SQLAjout = "INSERT INTO niveau (niv_libelle, niv_serv_ID) VALUES ('" + libelle + "', " + IDCombo + ")";
 							int retVal = Bdd.executeUpdate(SQLAjout);
 							Programme.showInformation("Le niveau a bien été ajouté.");
+							ajoutNiveau.dispose();
 						}
 				}
 
@@ -78,7 +90,7 @@ public class AjoutNiveau{
 		ajoutNiveau.getContentPane().add(boutonAnnuler);
 		
 		textFieldNiveau = new JTextField();
-		textFieldNiveau.setBounds(468, 333, 132, 22);
+		textFieldNiveau.setBounds(450, 350, 160, 25);
 		ajoutNiveau.getContentPane().add(textFieldNiveau);
 		textFieldNiveau.setColumns(10);
 
