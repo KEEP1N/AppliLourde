@@ -103,11 +103,8 @@ public class SupprimNiveau{
 							String SQLSuppr = "DELETE FROM niveau WHERE niv_ID =" + IDCombo;
 							int retVal = Bdd.executeUpdate(SQLSuppr);
 							Programme.showInformation("Le niveau a bien été supprimé.");
-<<<<<<< HEAD
-						
-=======
 							supprNiveau.dispose();
->>>>>>> 6da6cddeae48ec9c9d071c638003aa7a1a1aa869
+
 						}
 
 					}catch (Exception e1) {
