@@ -21,20 +21,28 @@ public class ModifNiveau{
 		final Conteneur modifNiveau = new Conteneur ("Modifier Entreprise");
 		modifNiveau.setTitle("Modifier Niveau");
 		
+		ComboService comboBoxService = new ComboService();
+		comboBoxService.setBounds(459, 312, 160, 25);
+		modifNiveau.getContentPane().add(comboBoxService);
+		
+		JLabel LabelPoste = new JLabel("Poste:");
+		LabelPoste.setBounds(350, 312, 160, 25);
+		modifNiveau.getContentPane().add(LabelPoste);
+		
 		JLabel lblNiveau = new JLabel("Niveau :");
-		lblNiveau.setBounds(350, 313, 160, 25);
+		lblNiveau.setBounds(350, 360, 160, 25);
 		modifNiveau.getContentPane().add(lblNiveau);
 		
 		final ComboNiveau comboBoxNiveau = new ComboNiveau();
-		comboBoxNiveau.setBounds(459, 315, 160, 23);
+		comboBoxNiveau.setBounds(459, 362, 160, 23);
 		modifNiveau.getContentPane().add(comboBoxNiveau);
 		
 		JLabel lblLibelle = new JLabel("Libelle :");
-		lblLibelle.setBounds(350, 367, 46, 14);
+		lblLibelle.setBounds(350, 414, 46, 14);
 		modifNiveau.getContentPane().add(lblLibelle);
 		
 		textFieldNiveau = new JTextField();
-		textFieldNiveau.setBounds(459, 364, 160, 23);
+		textFieldNiveau.setBounds(459, 410, 160, 23);
 		modifNiveau.getContentPane().add(textFieldNiveau);
 		textFieldNiveau.setColumns(10);
 		

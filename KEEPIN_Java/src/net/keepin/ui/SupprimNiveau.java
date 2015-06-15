@@ -25,6 +25,10 @@ public class SupprimNiveau{
 		final ComboNiveau comboBoxNiveau = new ComboNiveau();
 		comboBoxNiveau.setBounds(479, 349, 154, 23);
 		supprNiveau.getContentPane().add(comboBoxNiveau);
+		
+		JLabel LabelPoste = new JLabel("Poste:");
+		LabelPoste.setBounds(350, 400, 160, 25);
+		supprNiveau.getContentPane().add(LabelPoste);
 
 		Bouton boutonAnnuler = new Bouton("Annuler", 350, 128, 0);
 		boutonAnnuler.addMouseListener(new MouseAdapter() {
@@ -59,6 +63,7 @@ public class SupprimNiveau{
 							String SQLSuppr = "DELETE FROM niveau WHERE niv_ID =" + IDCombo;
 							int retVal = Bdd.executeUpdate(SQLSuppr);
 							Programme.showInformation("Le niveau a bien été supprimé.");
+						
 						}
 
 					}catch (Exception e1) {
